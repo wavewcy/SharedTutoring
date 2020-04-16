@@ -151,6 +151,13 @@ class CourseController extends Controller
             $cId = $request->input('cId');
             $img = $request->input('image');
 
+            if($subject === null or $day === null or $maxStudent === null or $Ncourse === null 
+        or $stime === null or $etime === null or $startDate === null or $endDate === null 
+        or $location === null or $price === null ) 
+       {
+        return redirect()->back()->with('null','Please fill all required field.');
+    }
+    else
             $haveName = DB::table('courses')->where(['Ncourse' => $Ncourse])->exists();
 
              $cName = DB::table('courses')

@@ -133,6 +133,33 @@ http://www.tooplate.com/view/2082-pure-mix
             background-color: #A9A9A9;
         }
 
+        .btn2 {
+	font-family: 'Source Sans Pro', sans-serif;
+	background: #f9f9fc;
+	/* rgb(156, 150, 140) */
+	border-color: #111112;
+	/* transparent */
+  color:#111112 ;
+	height: 50px;
+	font-size: 16px;
+  font-weight: 525;
+  letter-spacing: 1px;
+  transition: all 0.4s ease-in-out;
+	margin-top: -0.2px;
+	border-radius: 0px;
+	width:30%;
+
+}.btn2{
+	padding: 13px 32px;
+	margin-bottom: 5px;
+}
+
+.btn2:hover {
+	background: rgb(214, 213, 210);
+	/* color:#ffffff ; */
+	/* font-weight: 400; */
+}
+
         </style>
 
 	<!-- Site title
@@ -317,7 +344,7 @@ text: 'Success!!'
                                 </div>
 
                                 <div class="col-md-6 col-sm-4">
-                                    <button href="{{url('/')}}" class="button btn2">Cancle</button>
+                                 <button href="{{url('/')}}" class="button btn2">Cancle</button>
                                 </div>
                         </form>
                     </div>

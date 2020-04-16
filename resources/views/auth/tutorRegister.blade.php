@@ -103,7 +103,6 @@ http://www.tooplate.com/view/2082-pure-mix
 							<li><a href="{{url('/')}}">Home</a></li>
 							<li><a href="{{url('/login')}}">Log-in</a></li>
 							<li><a href="{{url('/register')}}">Register</a></li>
-							<li><a href="{{url('/contact')}}">Contact</a></li>
                       </ul>
                     </div>
                   </div>
@@ -180,12 +179,15 @@ http://www.tooplate.com/view/2082-pure-mix
 	                		<div class="avartar">
 									<a href="#">
 								<!-- <div id="circle"></div> -->
-									<img id="blah"src="images/avartar.png" alt="" class="center">
+									<img id="blah"src="images/avartar.png" alt="" class="center" 
+									style="width:100%;max-width:200px;border-radius: 50%;">
 
 								</a>
 
 								<div class="avartar-picker">
-									<input type="file" onchange="readURL(this);" name="image" id="file-1" class="inputfile" accept="image/jpeg,image/png,application/pdf" data-multiple-caption="{count} files selected" multiple />
+									<input type="file" onchange="readURL(this);" name="image" id="file-1" class="inputfile" 
+									accept="image/jpeg,image/png,application/pdf" style="width:100%;max-width:200px;border-radius: 50%;"
+									data-multiple-caption="{count} files selected" multiple />
 									<label for="file-1">
 										<i class="zmdi zmdi-camera"></i>
 										<span>Choose Picture</span>
@@ -230,7 +232,7 @@ http://www.tooplate.com/view/2082-pure-mix
 	                    	<label for="">
 	                    		Address *
 	                    	</label>
-	                    	<input type="text" name="addr" class="form-control3" required placeholder="Street address" style="margin-bottom: 20px">
+	                    	<input type="text" name="addr" class="form-control3" required style="margin-bottom: 20px">
 	                    	 </div>
 
 					</section>
@@ -247,17 +249,13 @@ http://www.tooplate.com/view/2082-pure-mix
 
 									<input type="file"style=" margin-bottom: 20px;" class="form-control3 custom-file-upload  "
 									name="evidence"  accept="image/jpeg,image/png,application/pdf" data-multiple-caption="{count} files selected" multiple required/>
-
-
 						</div>
 
 						<div class="form-row">
 	                    	<label for="">
 	                    		Education*
 							</label>
-							<p>ระดับชั้นการศึกษา ที่กำลังศึกษาหรือจบการศึกษามา</p>
-							<p>ตัวอย่าง ชั้นปีที่ 3 คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเชียงใหม่</p>
-	                    	<input type="text" name="education" required class="form-control3" placeholder="..">
+	                    	<input type="text" name="education" required class="form-control3" placeholder="ตัวอย่าง ชั้นปีที่ 3 คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเชียงใหม่">
 						</div>
 
 						<div class="form-row">
@@ -274,12 +272,7 @@ http://www.tooplate.com/view/2082-pure-mix
 							<p> </p>
 	                    	<textarea name="work" id="" class="form-control3" placeholder="ประสบการณ์สอน เช่น 1.ทำกลุ่มติว Onet สอนนักเรียนม.6" style="height: 149px"></textarea>
 											</div>
-						<!-- <div class="checkbox">
-							<label>
-								<input type="checkbox"> Create an account?
-								<span class="checkmark"></span>
-							</label>
-						</div> -->
+						
 	                </section>
 
 	                <!-- SECTION 4 -->
@@ -291,7 +284,7 @@ http://www.tooplate.com/view/2082-pure-mix
 	                    		<label for="">
 	                    		Phone *
 		                    	</label>
-	                    		<input type="tel" name="phone" class="form-control3" required>
+	                    		<input type="tel" name="phone" class="form-control3" required minlength=10 maxlength=10>
 	                    	</div>
 	                    </div>
 
@@ -306,14 +299,11 @@ http://www.tooplate.com/view/2082-pure-mix
 	                    	<label for="">
 	                    		Password*
 							</label>
-							<!-- <input id="password-field" type="password" name="password" required class="form-control"> -->
-							<input id="password-field" type="password" class="form-control" name="password" required>
+							<p class="above">Password must contain at least 8 or more characters</p>
+							<input id="password-field" type="password" class="form-control" name="password" required minlength=8>
 							<span toggle="#password-field"  class="fa fa-fw fa-eye field-icon toggle-password"></span>
 </div>
-
-						<!-- <div class="col-md-6 col-sm-20" style="margin-right:50px;"> onClick="this.form.action='{{ URL::to('/tutorReg/check') }}'; submit()"-->
-							<!-- form-control submit -->
-							<input type="submit" id="" class="actions li a" value="Create account" >
+							<input type="submit" style="widht:50%" id="" class="actions li a" value="Create account" >
 						<!-- </div> -->
 						<br>
 					</section>
@@ -374,29 +364,18 @@ http://www.tooplate.com/view/2082-pure-mix
         }
 </script>
 
-<!-- <script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+<script>
+	$(".toggle-password").click(function() {
+
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+	input.attr("type", "text");
+} else {
+	input.attr("type", "password");
 }
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script> -->
-
-
+});
+</script>
 
 </body>
 </html>

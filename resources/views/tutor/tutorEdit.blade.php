@@ -182,7 +182,7 @@ http://www.tooplate.com/view/2082-pure-mix
                                  <li><a href="#">review</a></li>
                               <!-- tutor -->
                               @elseif ( Auth:: user()->status == 'tutor')
-							  	<li><a href="{{url('/Profile')}}">Tutor Profile</a></li>
+							  	<li><a href="{{url('/Profile')}}">Profile</a></li>
                                 <li><a href="{{url('/course')}}">Tutor course</a></li>
                               <!-- admin -->
                               @else
@@ -246,7 +246,7 @@ http://www.tooplate.com/view/2082-pure-mix
 				</script>
 			@endif
 
-			@if (Session('mail'))
+			@if (Session('haveEmail'))
       <script type="text/javascript">
 				Swal.fire({
   icon: 'error',
@@ -301,8 +301,11 @@ http://www.tooplate.com/view/2082-pure-mix
 								@foreach($image as $img)
 									<div class="avartar-picker col-md-6" align="center" style="background-image: none ;">
 										<br>
-										<p><img id="blah" src="images/imageProfile/{{$img->img_path}}" onerror="this.src='images/user.png'" style="width:100%;max-width:200px"></p>
-									<input type="file"  onchange="readURL(this);" name="image" id="file-1" class="inputfile" accept="image/jpg,image/jpeg,image/png,application/pdf" data-multiple-caption="{count} files selected" multiple />
+										<p><img id="blah" src="images/imageProfile/{{$img->img_path}}" onerror="this.src='images/user.png'" style="width:100%;max-width:200px;border-radius: 50%;"></p>
+									<input type="file"  onchange="readURL(this);" name="image" id="file-1" class="inputfile" 
+									accept="image/jpg,image/jpeg,image/png,application/pdf" 
+									style="width:100%;max-width:200px;border-radius: 50%;"
+									data-multiple-caption="{count} files selected" multiple />
 									<label for="file-1">
 										<i class="zmdi zmdi-camera"></i>
 										<span>Choose Picture</span>
@@ -365,10 +368,13 @@ http://www.tooplate.com/view/2082-pure-mix
 								</div>
 								<br>
 								
-										<div id="outer" >
-											<input type="submit" class="inner button " value="Save" >
-											<button href="/SE_Project/public/Profile" class="inner button btn">Cancle</button>
-										</div>
+								<div id="outer" >
+											<!-- <input type="submit" class="inner button " value="Save" > -->
+											<input type="submit" class="inner button " value="Save" onClick="this.form.action='{{ URL::to('/tutorEdit/check') }}';">
+											<input type="button" class="inner button btn" value="Cancle" onClick="this.form.action='{{ URL::to('/') }}'; submit()">
+											<!-- <button style="width:47%;" class="inner button btn" onClick="javascript:history.go(-1)">Cancle</button> -->
+											<!-- <button href="/SE_Project/public/Profile" class="inner button btn">Cancle</button> -->
+								</div>
 										
 
 							</div>

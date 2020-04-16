@@ -41,7 +41,8 @@ http://www.tooplate.com/view/2082-pure-mix
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 	
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
 
 <style>
 
@@ -157,7 +158,14 @@ http://www.tooplate.com/view/2082-pure-mix
    </nav>
 </div>
 
-
+@if (Session('success'))
+      <script type="text/javascript">
+				Swal.fire({
+  icon: 'success',
+  title: 'OK',
+  text: 'Success!!'
+})
+				</script>
 
 
 

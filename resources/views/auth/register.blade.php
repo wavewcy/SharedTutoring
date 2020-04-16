@@ -105,7 +105,6 @@ http://www.tooplate.com/view/2082-pure-mix
 							<li><a href="{{url('/')}}">Home</a></li>
 							<li><a href="{{url('/login')}}">Log-in</a></li>
 							<li><a href="{{url('/register')}}">Register</a></li>
-							<li><a href="{{url('/contact')}}">Contact</a></li>
                       </ul>
                     </div>
                   </div>
@@ -156,29 +155,6 @@ http://www.tooplate.com/view/2082-pure-mix
 		</div>
 	</div>		
 </section>
-
-
-<!-- register section
-================================================== -->
-<!-- <section id="header" class="header-three">
-	<section id="contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-offset-3 col-md-5 col-sm-offset-2 col-sm-8">
-					<div class="header-thumb">
-						<h1 class="wow fadeIn" data-wow-delay="0.6s">Log-in</h1>
-						<h3 class="wow fadeInUp" data-wow-delay="0.9s">To enjoy with us</h3>
-						<div class="contact-form" align="center">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>		
-</section> -->
-
-
 
 
 <!-- Footer section
