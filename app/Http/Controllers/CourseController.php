@@ -192,6 +192,11 @@ class CourseController extends Controller
             $cId = $request->input('cId');
             $img = $request->input('image');
 
+            if($file = $request->file('image') ){
+                $img = $file -> getClientOriginalName();
+                $file -> move('images',$img);
+            }
+
             if($subject === null or $day === null or $maxStudent === null or $Ncourse === null
         or $stime === null or $etime === null or $startDate === null or $endDate === null
         or $location === null or $price === null )
@@ -235,7 +240,8 @@ class CourseController extends Controller
 
             return redirect('/course')->with('success','Course created');
 
-            }elseif($img != null){
+            }else{
+
                 $tutor = DB::table('courses')
         ->where(['idTutor' => $idTutor,'idcourse'=>$cId])
             ->update([
@@ -251,11 +257,6 @@ class CourseController extends Controller
                 'price' => $price,
                 'description' => $message,
                 'img' => $img]);
-
-                if($file = $request->file('image') ){
-                    $img = $file -> getClientOriginalName();
-                    $file -> move('images/imageCourse',$img);
-                }
 
             return redirect('/course')->with('edit','Course is edited');
             }
