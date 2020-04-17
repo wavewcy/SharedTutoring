@@ -82,7 +82,7 @@ class TutorController extends Controller
         $endDate = $request->input('endDate');
         $location = $request->input('location');
         $price = $request->input('price');
-        $message = $request->input('description');
+        $message = $request->input('message');
 
         if($file = $request->file('image') ){
             $image_course = $file -> getClientOriginalName();
