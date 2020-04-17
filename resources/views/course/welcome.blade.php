@@ -41,7 +41,6 @@ http://www.tooplate.com/view/2082-pure-mix
    -webkit-line-clamp: 3; /* number of lines to show */
    -webkit-box-orient: vertical;
         }
-
 .swiper_wrap{padding:0px 5px;height:100%;width: 100%;position: relative;display: block;text-align: left;}
 .swiper-button-next{
 margin-top: 0px;
@@ -84,7 +83,6 @@ transform: translateY(-50%);
     border-style: double;
     border-color: #a9e4fc;
     color:#111112 ;
-
 }
 .yel:hover{
 	border-width: 5px;
@@ -238,7 +236,6 @@ text: 'Success!!'
       </div>
    </nav>
 </div>
-
 
 
 
@@ -531,7 +528,6 @@ text: 'Success!!'
    function fncAction1(idTutor){
 		window.location.assign("/SE_Project/public/Profile?idTutor="+idTutor);
 	} //ไปหน้า profile tutor
-
 </script>
 
    <!-- Footer section
