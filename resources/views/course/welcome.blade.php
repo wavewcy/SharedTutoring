@@ -136,15 +136,24 @@ transform: translateY(-50%);
 
 <body>
 
-    @if (Session('success'))
-    <script type="text/javascript">
-              Swal.fire({
-icon: 'success',
-title: 'OK',
-text: 'Success!!'
-})
+   @if (Session('success'))
+      <script type="text/javascript">
+            Swal.fire({
+               icon: 'success',
+               title: 'OK',
+               text: 'Success!!'
+               })
+      </script>
+      @endif
 
-</script>
+   @if (Session('success2'))
+      <script type="text/javascript">
+            Swal.fire({
+               icon: 'success',
+               title: 'Success!',
+               text: 'ระบบกำลังตรวจสอบข้อมูลของท่าน ใช้เวลาประมาณ 1-2 วัน หลังจากนั้นกรุณาลอง log in เข้าสู่ระบบ'
+               })
+      </script>
       @endif
 <!-- Preloader section
 ================================================== -->
