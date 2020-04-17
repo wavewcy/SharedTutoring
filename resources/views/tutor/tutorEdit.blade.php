@@ -342,7 +342,7 @@ http://www.tooplate.com/view/2082-pure-mix
 	                    	<input type="email" name="email" class="form-control" value="{{$tu->email}}" required></p>
 
 									<p class="col-md-6" align="left"><label >Phone *</label>
-	                    		<input type="tel" name="phone" class="form-control" value="{{$tu->phone}}" required></p>
+	                    		<input type="tel" name="phone" class="form-control" value="{{$tu->phone}}" required minlength=10 maxlength=10></p>
 
 									<p class="col-md-6" align="left"><label>Education*</label>
 												<input type="text" name="education" class="form-control" value="{{$tu->education}}" required ></p>

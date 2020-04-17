@@ -159,6 +159,10 @@ http://www.tooplate.com/view/2082-pure-mix
 	/* color:#ffffff ; */
 	/* font-weight: 400; */
 }
+ label {
+      float:left;
+      margin-left:5px;
+       }
 
         </style>
 
@@ -258,9 +262,9 @@ text: 'Success!!'
                            <!-- check status -->
                               <!-- student -->
                               @if ( Auth:: user()->status == 'student')
-                                 <li><a href="{{url('/studentEdit')}}">edit profile</a></li>
-                                 <li><a href="{{url('/enroll')}}">enrollment</a></li>
-                                 <li><a href="{{url('/review')}}">review</a></li>
+                                    <li><a href="{{url('/studentEdit')}}">edit profile</a></li>
+                                    <li><a href="{{url('/review')}}">review</a></li>
+									<li><a href="{{url('/enroll')}}">enrollment</a></li>\
                               <!-- tutor -->
                               @elseif ( Auth:: user()->status == 'tutor')
                                  <li><a href="{{url('/Profile')}}">Profile</a></li>
@@ -326,7 +330,7 @@ text: 'Success!!'
                                 <input name="loca" type="text" class="form-control" placeholder="สถานที่เรียน" required>
 
                                  <div class="form-group">
-                                    <label for="sex"><font size="3">Sex*</font></label>
+                                    <label for="sex" ><font size="3">Sex*</font></label>
                                     <select class="form-control" id="sex" name="sex">
                                        <option>เพศใดก็ได้</option>
                                        <option>ชาย</option>
@@ -334,7 +338,7 @@ text: 'Success!!'
                                     </select>
                                  </div>
                                 
-                                <label for="phone" ><font size="3">Phone*</font></label>
+                                <label for="phone"><font size="3">Phone*</font></label>
                                 <input name="phone" type="text" class="form-control" maxlength="10" placeholder="เบอร์ติดต่อ" required>
 
                                 <!-- <div class="contact-submit"> -->
@@ -344,8 +348,9 @@ text: 'Success!!'
                                 </div>
 
                                 <div class="col-md-6 col-sm-4">
-                                 <button href="{{url('/')}}" class="button btn2">Cancle</button>
-                                </div>
+                                 <!-- <button href="{{url('/')}}" class="button btn2">Cancle</button> -->
+                                 <input type="button" class="inner button btn2" value="Cancle" onClick="this.form.action='{{ URL::to('/') }}'; submit()">
+	                            </div>
                         </form>
                     </div>
                 </div>
