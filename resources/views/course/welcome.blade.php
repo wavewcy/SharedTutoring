@@ -408,7 +408,7 @@ text: 'Success!!'
         @foreach($idCards as $idCard)
 		@if($t->idTutor == $idCard->idTutor)
           <div class="image-holder">
-            <img src="images/imageProfile/{{$idCard->img_path}}" class="img-responsive img-circle" alt="Mary" style="width:100%;max-width:200px">
+            <img src="images/imageProfile/{{$idCard->img_path}}" onerror="this.src='images/user.png'" class="img-responsive img-circle" alt="Mary" style="width:100%;max-width:200px">
           </div>
           @endif
         @endforeach

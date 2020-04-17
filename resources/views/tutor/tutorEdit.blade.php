@@ -293,15 +293,16 @@ http://www.tooplate.com/view/2082-pure-mix
 						<div class="card" style="background :">
 							<div class="contentCard">
 								<form action="{{ URL::to('/tutorEdit/check') }}" method ="post" enctype="multipart/form-data">
-									<div class="col-md-12">
+								@csrf
+								<div class="col-md-6" align="center">
 										<br>
-										<p><img id="blah" src="images/imageProfile/{{$image[0]->img_path}}" onerror="this.src='images/user.png'" style="width:100%;max-width:200px;border-radius: 50%;"></p>
-										<input type="file"  onchange="readURL(this);" name="image" id="file-1" class="inputfile" 
+										<p ><img id="blah" src="images/imageProfile/{{$image[0]->img_path}}" onerror="this.src='images/user.png'" style="width:100%;max-width:200px;border-radius: 50%;"></p>
+										<input type="file"  onchange="readURL(this);" name="image" id="file-1" class="inputfile" style="display:none;" 
 										accept="image/jpg,image/jpeg,image/png,application/pdf" 
 										data-multiple-caption="{count} files selected" multiple />
 										<label for="file-1">
 										<i class="zmdi zmdi-camera"></i>
-										<span>Choose Picture</span>
+										<span style="font-size:23px;">Choose Picture</span>
 										</label>
 									</div>
 								
@@ -347,11 +348,10 @@ http://www.tooplate.com/view/2082-pure-mix
 									<input type="comment" name="about"  class="form-control" placeholder="{{$tu->about_me}}" value="{{$tu->about_me}}" style="height: 70px"></input>
 	
 									<p class="col-md-12" align="left"></p>
-									<input style="width:40%;margin-left:300px;" type="submit" class="button col-md-6" align="center" value="Save">
-									
-									
+									<input style="width:40%;margin-left:315px;" type="submit" class="button col-md-6" align="center" value="Save">
+							
 								</form>
-								<button style="width:39%;margin-left:315px;" class="button btn" onclick="fncAction1({{Auth:: user()->id}})">Cancle</button>	
+								<button style="width:40%;margin-left:315px;" align="center" class="button btn" onclick="fncAction1({{Auth:: user()->id}})">Cancle</button>	
 							</div>
 						</div>
 				</div>
