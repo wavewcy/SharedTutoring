@@ -329,7 +329,7 @@ http://www.tooplate.com/view/2082-pure-mix
 			if (willDelete) {
 				swal("Poof! You have just enrolled this course!", {icon: "success"});
 				setTimeout(function(){
-					window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse);
+					window.location.assign("{{URL::to('/courseInformation/enrolled?idcourse=')}}"+idcourse);
 				},2000);
 			} else {
 				swal("Cancel !");

@@ -43,6 +43,14 @@ http://www.tooplate.com/view/2082-pure-mix
    <style>
       /* side nav */
 
+      .text {
+         overflow: hidden;
+         text-overflow: ellipsis;
+         display: -webkit-box;
+         -webkit-line-clamp: 1; /* number of lines to show */
+         -webkit-box-orient: vertical;
+      }
+
       .sidenav {
          height: 100%;
          width: 0;
@@ -436,7 +444,7 @@ http://www.tooplate.com/view/2082-pure-mix
                            <div class="blog-thumb">
                               <a onclick="fncAction0({{$c->idcourse}})" class="click"><img src="images/imageCourse/{{$c->img}}" style="width:100%;max-width:300px" onerror="this.src='images/blog-img3.jpg'" class="img-responsive" alt="Blog"></a>
                               <a onclick="fncAction0({{$c->idcourse}})">
-                                 <h1 class="click">{{$c->Ncourse}}</h1>
+                                 <h1 class="click text">{{$c->Ncourse}}</h1>
                               </a>
                               <p class="col-md-6" align="left"><i class="fa fa-pencil"></i> : {{$c->subject}} </p>
                               @foreach ( $students as $student)
