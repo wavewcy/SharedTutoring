@@ -85,6 +85,16 @@ http://www.tooplate.com/view/2082-pure-mix
          })
       </script>
       @endif
+
+      <!-- @if (Session('success'))
+      <script type="text/javascript">
+         Swal.fire({
+            icon: 'success',
+            title: 'OK',
+            text: 'Success!'
+         })
+      </script>
+      @endif -->
    </div>
 
 
