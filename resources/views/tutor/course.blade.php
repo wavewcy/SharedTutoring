@@ -79,7 +79,7 @@ http://www.tooplate.com/view/2082-pure-mix
                <div class="navicon">
                   @if (Auth:: check())
                      <h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                  @endif  
+                  @endif
                   <div class="menu-container">
                      <div class="circle dark inline">
                         <i class="icon ion-navicon"></i>
@@ -161,17 +161,17 @@ http://www.tooplate.com/view/2082-pure-mix
    <div class="container">
       <div class="row" >
          <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="1.2s">
-            <h1>All Courses ({{sizeof($courses)}})</h1><br /> 
+            <h1>All Courses ({{sizeof($courses)}})</h1><br />
             @if(sizeof($courses)>0)
                @foreach ($courses as $index => $course)
                   <div class="card col-md-12">
 							<div class="contentCard">
                         <div class="col-md-3" align="center">
                            <img src="images/{{$course->img}}" onerror="this.src='images/blog-img3.jpg'" ></a>
-                        </div> 
+                        </div>
                         <div class="col-md-9">
                            <!-- เพิ่ม link ไปหน้า course information ด้วย -->
-                           <h4 class="col-md-9" align="left"><a class="click" onClick="fncAction4({{$course->idcourse}})"><b>{{$course->Ncourse}}</b></a></h4> 
+                           <h4 class="col-md-9" align="left"><a class="click" onClick="fncAction4({{$course->idcourse}})"><b>{{$course->Ncourse}}</b></a></h4>
                            <h4 class="col-md-3">
                               <div id="outer">
                                  <div class="inner" onClick="fncAction0({{$course->idcourse}})">
@@ -181,7 +181,7 @@ http://www.tooplate.com/view/2082-pure-mix
                                     <i class="fa fa-trash click"></i>
                                  </div>
                               </div>
-                           </h4> 
+                           </h4>
                            <p class="col-md-6" align="left"><b>Subject : </b>{{$course->subject}}</p>
                            <p class="col-md-6" align="left"><a class="click" onClick="fncAction3({{$course->idcourse}})"><b>Student : </b>{{$n[$index]}}/{{$course->max_student}}</a></p>
                            <p class="col-md-6" align="left"><b>Schedule : </b>{{$course->day}} {{$course->start_time}}-{{$course->end_time}}</p>
@@ -205,10 +205,10 @@ http://www.tooplate.com/view/2082-pure-mix
 
 	function fncAction0(idcourse){
 
-		window.location.replace("/SE_Project/public/courseEdit?idcourse="+idcourse); //เติม path ไปหา edit course
+		window.location.assign("{{URL::to('/courseEdit?idcourse=')}}"+idcourse); //เติม path ไปหา edit course
 
 	}
-   
+
    function fncAction1(idcourse){
       swal({
 			title: "Are you sure?",
@@ -221,7 +221,7 @@ http://www.tooplate.com/view/2082-pure-mix
 			if (willDelete) {
 				swal("Poof! The course has been deleted!", {icon: "success"});
 				setTimeout(function(){
-					window.location.assign("/SE_Project/public/course/deleted?idcourse="+idcourse);
+					window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse);
 				},2000);
 			} else {
 				swal("The course is safe!");
@@ -230,19 +230,19 @@ http://www.tooplate.com/view/2082-pure-mix
 	}
 
    function fncAction2(){
-      window.location.assign("/SE_Project/public/addCourse");
+      window.location.assign("{{URL::to('/addCourse')}}");
    }
 
    function fncAction3(idcourse){
-		window.location.assign("/SE_Project/public/course/studentList?idcourse="+idcourse); //เติม path ไปหา edit course
+		window.location.assign("{{URL::to('/course/studentList?idcourse=')}}"+idcourse); //เติม path ไปหา edit course
 	}
 
    function fncAction4(idcourse){
-		window.location.assign("/SE_Project/public/courseInformation?idcourse="+idcourse);
+		window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse);
    }
-   
+
    function fncAction5(idTutor) {
-      window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
+      window.location.assign("{{URL::to('/Profile?idTutor=')}}" + idTutor);
    }
 </script>
 <!-- Footer section

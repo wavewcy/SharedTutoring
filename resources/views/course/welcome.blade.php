@@ -290,7 +290,7 @@ transform: translateY(-50%);
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="images/tt.png" class="img-responsive" alt="feature img" 
+                        <img src="images/tt.png" class="img-responsive" alt="feature img"
                         style="width:100%;max-width:250px;float:center;margin-left:100px;">
 					</div>
 					<div class="col-md-6 wow fadeInUp" data-wow-delay="0.8s">
@@ -320,7 +320,7 @@ transform: translateY(-50%);
             </div>
          </div>
          <div class="row">
-            <a href="/SE_Project/public/student/announce" class="btn yel" style="float: center;width:20%;font-size: 15px;">
+            <a href="{{URL::to('/student/announce')}}" class="btn yel" style="float: center;width:20%;font-size: 15px;">
          <b>ADD ANNOUNCEMENT</b></a></div>
          <br>
          </div>
@@ -333,7 +333,7 @@ transform: translateY(-50%);
          </div>
 
          @endif
-      @endif 
+      @endif
       <div class="wow fadeInUp" data-wow-delay="0.5s">
          <div class="row">
             <div class="col-md-offset-1 col-md-10 col-sm-12">
@@ -341,7 +341,7 @@ transform: translateY(-50%);
             </div>
          </div>
          <div class="row">
-            <a href="/SE_Project/public/showAnn" class="btn" style="float: center;width:20%;font-size: 15px;"><b>ANNOUNCEMENT</b></a>
+            <a href="{{URL::to('/showAnn')}}" class="btn" style="float: center;width:20%;font-size: 15px;"><b>ANNOUNCEMENT</b></a>
          </div>
       </div>
    </div>
@@ -358,7 +358,7 @@ transform: translateY(-50%);
         </div>
       </div>
     <div class="row wow fadeInUp" data-wow-delay="0.5s">
-       <a href="/SE_Project/public/allcourse" class="btn" style="float: right;margin-right: 65px;width:10%;">
+       <a href="{{URL::to('/allcourse')}}" class="btn" style="float: right;margin-right: 65px;width:10%;">
        <b>All course</b></a>
     </div>
    <div class="swiper_wrap">
@@ -372,7 +372,7 @@ transform: translateY(-50%);
                            <div class="blog-thumb">
                               <a onclick="fncAction0({{$c->idcourse}})" class="click"><img src="images/{{$c->img}}" onerror="this.src='images/blog-img3.jpg'" class="img-responsive" alt="Blog"></a>
                               <h1 onclick="fncAction0({{$c->idcourse}})" class="text click">{{$c->Ncourse}}</h1>
-                              
+
                               <p class="col-md-7" align="left"><i class="fa fa-pencil"></i> : {{$c->subject}} </p>
                               @foreach ( $students as $student)
                                  @if ($student->idcourse == $c->idcourse)
@@ -421,10 +421,10 @@ transform: translateY(-50%);
           </div>
           @endif
         @endforeach
-        
+
          <h2 class="heading">{{$t->Fname}}</h2>
          <h2 class="heading">{{$t->Lname}}</h2>
-        
+
         <div class="heading">
         <?php
                            if ($t->rating>=0 and $t->rating<0.5){
@@ -520,7 +520,7 @@ transform: translateY(-50%);
          <h1 style="float:right;padding-top:0px;">Register to be our tutor</h1>
       </div>
       <div class="col-md-offset-1 col-md-5 col-sm-12 wow fadeInUp" data-wow-delay="0.4s">
-         <a href="/SE_Project/public/tutorReg" class="btn" style="float: left;width:10em;font-size: 20px; line-height:38px;"><b>REGISTER</b></a>
+         <a href="{{URL::to('/tutorReg')}}" class="btn" style="float: left;width:10em;font-size: 20px; line-height:38px;"><b>REGISTER</b></a>
       </div>
    </div>
 </section>
@@ -531,11 +531,11 @@ transform: translateY(-50%);
 <script type="text/javascript">
 
    function fncAction0(idcourse){
-      window.location.assign("/SE_Project/public/courseInformation?idcourse="+idcourse); //ไปหน้า courseinfo
+      window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse); //ไปหน้า courseinfo
    }
 
    function fncAction1(idTutor){
-		window.location.assign("/SE_Project/public/Profile?idTutor="+idTutor);
+		window.location.assign("{{URL::to('/Profile?idTutor=')}}"+idTutor);
 	} //ไปหน้า profile tutor
 </script>
 

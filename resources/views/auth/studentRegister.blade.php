@@ -221,7 +221,7 @@ http://www.tooplate.com/view/2082-pure-mix
 			  <h1>Let's be a member!</h1>
 			<div class="contact-form">
 			  <!-- method="post"  action="#"newhotpartgenerate.php onsubmit="checkform(event)"  action="{{ URL::to('/studentReg/check') }} "-->
-				<form id="contact-form"   name="frmhot" >
+				<form id="contact-form"   name="frmhot" action="{{ URL::to('/studentReg/check') }}" method ="get" enctype="multipart/form-data" >
 				  	<label for="firstName"><font size="3">First name*</font></label>
 					<input name="Fname" type="text" class="form-control" placeholder="Your Frist Name" required>
 
@@ -253,11 +253,11 @@ http://www.tooplate.com/view/2082-pure-mix
 
 					<!-- <div class="contact-submit"> -->
 						<div class="col-md-6 col-sm-4">
-							<input type="submit" class="form-control submit" value="Create account" onClick="this.form.action='{{ URL::to('/studentReg/check') }}'; submit()">
+							<input type="submit" class="form-control submit" value="Create account" >
 						</div>
 						<!--  -->
 						<div class="col-md-6 col-sm-4">
-						<a href="/SE_Project/public/" class="btn">Cancle</a>
+						<a href="{{URL::to('/')}}" class="btn">Cancle</a>
 						<!-- <input type="submit" stlye="background-color:pink;" class="form-control submit" value="Cancle" onClick="this.form.action='{{ URL::to('/main/employee') }}'; submit()">  -->
 						</div>
 

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Carbon\Carbon;
+use strtotime;
+
 
 
 class StudentController extends Controller
@@ -31,11 +34,17 @@ class StudentController extends Controller
         //     ->where(['tutor.idtutor' => [$course->idTutor]])
         //     ->get();
         // }
+        $today = Carbon::today();
 
+
+        /*$enrolls = DB::SELECT('SELECT * FROM courses join tutors using (idTutor)
+        join enroll using (idcourse)
+        where enroll.idstudent = ? and end_date > ? ',[$id,$today->format('Y-m-d')]);*/
 
         $enrolls=DB::table('enroll')->join('courses','enroll.idcourse', '=', 'courses.idcourse')
             ->join('tutors', 'tutors.idtutor', '=', 'enroll.idtutor')
             ->where(['enroll.idstudent' => $id])
+            ->whereDate('courses.end_date', '>', $today->format('Y-m-d') )
             ->get();
 
         if($enrolls != null){
@@ -96,22 +105,19 @@ class StudentController extends Controller
                 ['name' =>$Fname,
                 'email' => $email,]
             );
-            
             return redirect('/studentEdit')->with('success','success update');
         }
     }
 
     public function reviewFrom(){
         $id = Auth::id();
-        // $list = DB::table('enroll')->join('tutors','enroll.idTutor','=','tutors.idTutor')
-        // ->join('courses','enroll.idcourse','=','courses.idcourse')
-        // ->where(['idStudent' => $id])->distinct('enroll.idcourse')->get();
 
         $list = DB::select("SELECT * FROM enroll
                 LEFT JOIN tutors ON enroll.idTutor = tutors.idTutor
                 LEFT JOIN courses ON enroll.idcourse = courses.idcourse
                 WHERE enroll.idstudent = '$id'
-                AND courses.end_date < CURRENT_DATE()");
+                AND courses.end_date < CURRENT_DATE()
+                AND courses.idcourse NOT IN( SELECT idcourse FROM review WHERE idstudent = '$id' )");
 
         return view('student.review', ['list' => $list]);
     }
@@ -130,7 +136,8 @@ class StudentController extends Controller
             'idcourse' => $idCourse,
             'idstudent' => $id,
             'review' => $rate,
-            'comment' => $comment]
+            'comment' => $comment,
+            'date' => now()]
         );
         return  redirect()->back()->with('pass','Review completed');
     }

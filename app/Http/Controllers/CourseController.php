@@ -18,19 +18,20 @@ class CourseController extends Controller
 
     public function welcome(){
         $tutors = DB::table('tutors')->orderBy('rating','desc')->take(3)->get();
-        
+        $today = Carbon::today();
         $id = Auth::id();
         if(Auth:: check() && Auth:: user()->status == 'student'){
             $courses = DB::select("SELECT * FROM courses
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
-                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
+                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')
+                                    and ? <= start_date",[$today->format('Y-m-d')]);
         }else{
-            $today = Carbon::today();
-            $courses = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+           
+            $courses = DB::SELECT('SELECT * FROM courses join tutors using (idTutor)
             where ? <= start_date',[$today->format('Y-m-d')]);
         }
-        
-        
+
+
         $idCards = DB::table('image')->get();
         $rate = DB::table('tutors')
             ->update(['rating' => DB::raw("(SELECT AVG(review.review) FROM review
@@ -44,7 +45,7 @@ class CourseController extends Controller
         FROM courses
         LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
         GROUP BY courses.idcourse');
-    
+
         return view('/course/welcome',['courses' => $courses,'tutors' => $tutors,
         'idCards' => $idCards,'students'=>$students]);
     }
@@ -80,19 +81,21 @@ class CourseController extends Controller
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
 
-        return view('/course/home',['courses' => $courses,'students'=>$students]);
+        $maxprice = DB::select("SELECT MAX(price) as max FROM courses");
+
+        return view('/course/home',['courses' => $courses,'students'=>$students,'maxprice'=>$maxprice]);
     }
 
     public function courseShow(){
         $id = Auth::id();
-
+        $today = Carbon::today();
         if(Auth:: check() && Auth:: user()->status == 'student'){
             $courses = DB::select("SELECT * FROM courses
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
-                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
+                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')
+                                    and ? <= start_date",[$today->format('Y-m-d')]);
         }else{
-            $today = Carbon::today();
-            $courses = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+            $courses = DB::SELECT('SELECT * FROM courses join tutors using (idTutor)
             where ? <= start_date',[$today->format('Y-m-d')]);
         }
 
@@ -101,7 +104,9 @@ class CourseController extends Controller
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
 
-        return view('/course/home',['courses' => $courses,'students'=>$students]);
+        $maxprice = DB::select("SELECT MAX(price) as max FROM courses");
+
+        return view('/course/home',['courses' => $courses,'students'=>$students,'maxprice'=>$maxprice]);
     }
 
     public function info(request $request){
@@ -132,10 +137,10 @@ class CourseController extends Controller
                 if ($student->idstudent == $id){
                     $enrolled=1;
                 }
-            } 
+            }
             }
         }
-        
+
         return view('course/courseInfo',['avgReview' => $avgReview,'nReview' => $nReview,'course' => $course, 'tutor' => $tutor,
         'imageTutor'=>$imageTutor, 'age'=>$age, 'startTime'=>$startTime, 'endTime'=>$endTime,'students'=>$students,'enrolled'=>$enrolled]);
     }
@@ -187,9 +192,9 @@ class CourseController extends Controller
             $cId = $request->input('cId');
             $img = $request->input('image');
 
-            if($subject === null or $day === null or $maxStudent === null or $Ncourse === null 
-        or $stime === null or $etime === null or $startDate === null or $endDate === null 
-        or $location === null or $price === null ) 
+            if($subject === null or $day === null or $maxStudent === null or $Ncourse === null
+        or $stime === null or $etime === null or $startDate === null or $endDate === null
+        or $location === null or $price === null )
        {
         return redirect()->back()->with('null','Please fill all required field.');
     }
@@ -252,7 +257,7 @@ class CourseController extends Controller
                     $file -> move('images/imageCourse',$img);
                 }
 
-            return redirect('/course')->with('success','Course created');
+            return redirect('/course')->with('edit','Course is edited');
             }
 
 

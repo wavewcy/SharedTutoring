@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Course;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Carbon\Carbon;
+use strtotime;
 
 class TutorController extends Controller
 {
@@ -117,7 +119,7 @@ class TutorController extends Controller
             'img' => $image_course]
         );
 
-        return redirect('/addCourse')->with('success','Course created');
+        return redirect('/course')->with('success','Course created');
     }
 
     public function showProfile(request $request){
@@ -125,6 +127,11 @@ class TutorController extends Controller
         $tutor = DB::table('tutors') -> where(['idTutor'=>$idTutor]) -> get();
         $course = DB::table('courses')-> join('tutors','courses.idTutor','=','tutors.idTutor')
         -> where(['courses.idTutor' => $idTutor])->get();
+
+        $today = Carbon::today();
+        $course = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+        where ? <= start_date and courses.idTutor = ?',[$today->format('Y-m-d'),$idTutor]);
+
         $img = DB::table('image')->where(['idTutor'=>$idTutor])->value('img_path');
 
         $rate = DB::table('review')->where(['idTutor'=>$idTutor])->avg('review');

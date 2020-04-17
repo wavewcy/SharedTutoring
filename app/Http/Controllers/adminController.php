@@ -47,6 +47,7 @@ class adminController extends Controller
     public function fired(request $request){
         $idTutor = $request->input('idTutor');
         DB::table('image')->where(['idTutor'=>$idTutor])->delete();
+        DB::table('review')->where(['idTutor'=>$idTutor])->delete();
         DB::table('enroll')->where(['idTutor'=>$idTutor])->delete();
         DB::table('courses')->where(['idTutor'=>$idTutor])->delete();
         DB::table('users')->where(['id'=>$idTutor])->delete();
