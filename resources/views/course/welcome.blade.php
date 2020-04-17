@@ -205,7 +205,7 @@ transform: translateY(-50%);
                         <li><a href="{{url('/studentEdit')}}">edit profile</a></li>
                               <!-- tutor -->
                               @elseif ( Auth:: user()->status == 'tutor')
-								<li><a href="{{url('/Profile')}}">Profile</a></li>
+                                 <li><a class="click" onclick="fncAction1({{Auth:: user()->id}})">Profile</a></li>
                                 <li><a href="{{url('/course')}}">Tutor course</a></li>
                                  <!-- admin -->
                                  @else
