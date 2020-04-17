@@ -104,7 +104,7 @@ http://www.tooplate.com/view/2082-pure-mix
                   <div class="navicon">
                      @if (Auth:: check())
                         <h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                     @endif  
+                     @endif
                      <div class="menu-container">
                         <div class="circle dark inline">
                            <i class="icon ion-navicon"></i>
@@ -194,7 +194,7 @@ http://www.tooplate.com/view/2082-pure-mix
                      {{csrf_field()}}
                      <h3>Choose Picture</h3>
                      <input type="file" onchange="readURL(this);" name="image" accept="image/jpg,image/jpeg,image/png,application/pdf" data-multiple-caption="{count} files selected" multiple />
-                     
+
                      <div class="col-md-12">
                         <label for="firstName">
 							   	<font size="3">Course Name*</font>
@@ -257,7 +257,7 @@ http://www.tooplate.com/view/2082-pure-mix
                         </label>
                      <input name="location" type="text" class="form-control" maxlength="45" placeholder="Location" required>
                      </div>
-                     
+
                      <div class="col-md-6">
                         <label for="firstName">
                            <font size="3">Price*</font>
@@ -270,12 +270,12 @@ http://www.tooplate.com/view/2082-pure-mix
                            <font size="3">Description</font>
                         </label>
                         <textarea name="message" class="form-control" placeholder="Course Description" rows="4" ></textarea>
-                     </div>  
+                     </div>
 
                      <div class="contact-submit col-md-12" style="width:100%;margin-bottom:30px;">
                         <input type="submit" class="form-control submit" value="SUBMIT">
                      </div>
-                     
+
                   </form>
                </div>
             </div>
@@ -286,9 +286,9 @@ http://www.tooplate.com/view/2082-pure-mix
 <!-- javascript section
 ================================================== -->
 <script type="text/javascript">
-   
+
    function fncAction1(idTutor){
-		window.location.assign("/SE_Project/public/Profile?idTutor="+idTutor);
+		window.location.assign("{{URL::to('/Profile?idTutor=')}}"+idTutor);
 	}
 
 </script>

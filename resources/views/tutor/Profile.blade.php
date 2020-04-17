@@ -297,7 +297,7 @@ http://www.tooplate.com/view/2082-pure-mix
                <div class="navicon">
                   @if (Auth:: check())
                      <h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                  @endif  
+                  @endif
                   <div class="menu-container">
                      <div class="circle dark inline">
                         <i class="icon ion-navicon"></i>
@@ -378,7 +378,7 @@ http://www.tooplate.com/view/2082-pure-mix
                   <h1 class="col-md-12">{{$tutor->Fname}} {{$tutor->Lname}}</h1>
                   @if (Auth::check())
                      @if ( Auth:: user()->status == 'tutor' and Auth:: user()->id == $tutor->idTutor)
-                        <span class="follow"align="right"><a href="/SE_Project/public/tutorEdit">Edit</a></span>
+                        <span class="follow"align="right"><a href="{{URL::to('/tutorEdit')}}">Edit</a></span>
                      @endif
                   @endif
                   <h3>{{$tutor->email}}</h3>
@@ -615,7 +615,7 @@ http://www.tooplate.com/view/2082-pure-mix
                <ul class="navi">
                   <lii>Course</lii>
                </ul>
-               
+
                @if (sizeof($courses)>0)
                   @foreach ($courses as $course)
                      <div class="cont" >
@@ -633,7 +633,7 @@ http://www.tooplate.com/view/2082-pure-mix
                         </div>
                      </div>
                   @endforeach
-               
+
                @else
                   <h3 style="color: silver;">No course</h3>
                @endif
@@ -646,10 +646,10 @@ http://www.tooplate.com/view/2082-pure-mix
 
 <script type="text/javascript">
       function fncAction0(idcourse) {
-         window.location.assign("/SE_Project/public/courseInformation?idcourse=" + idcourse);
+         window.location.assign("{{URL::to('/courseInformation?idcourse=')}}" + idcourse);
       }
       function fncAction1(idTutor) {
-         window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
+         window.location.assign("{{URL::to('/Profile?idTutor=')}}" + idTutor);
       }
 </script>
 

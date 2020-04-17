@@ -159,7 +159,7 @@ http://www.tooplate.com/view/2082-pure-mix
               <div class="navicon">
 			  		@if (Auth:: check())
                      	<h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                  	@endif  
+                  	@endif
                   <div class="menu-container">
                      <div class="circle dark inline">
                         <i class="icon ion-navicon"></i>
@@ -233,7 +233,7 @@ http://www.tooplate.com/view/2082-pure-mix
          text: 'Input all requied field!'
    })
 	</script>
-@endif	
+@endif
 @if (Session('haveName'))
    <script type="text/javascript">
 		Swal.fire({
@@ -270,24 +270,24 @@ http://www.tooplate.com/view/2082-pure-mix
 					<h1>Edit Your Course</h1>
 						<div class="card" style="background :">
 							<div class="contentCard">
-                        <p class="col-md-12" align="left"> 
+                        <p class="col-md-12" align="left">
                         <form action="{{ URL::to('/courseEdit/check') }}" method ="post" enctype="multipart/form-data">
 				               {{csrf_field()}}
 							      <input name="cId" type="hidden" value="{{$cId}}" ></p>
-								   
+
                            <div class="col-md-12"><br>
 									   <div class="avartar-picker col-md-12" align="center" >
 										   <br>
 										   <p><img id="blah" src="images/imageCourse/{{$c->img}}" onerror="this.src='images/blog-img3.jpg'" style="width:100%;max-width:200px"></p>
 									      <input style="display:none" type="file" onchange="readURL(this);" name="image" id="file-1" class="inputfile" accept="image/jpg,image/jpeg,image/png,application/pdf" data-multiple-caption="{count} files selected" multiple />
 									      <label for="file-1"><i class="zmdi zmdi-camera"></i><p class="click">Choose Picture</p><br></label>
-								      </div> 
-									   <p class="col-md-6" align="left"><label><font size="3">Name Course*</font></label> 
+								      </div>
+									   <p class="col-md-6" align="left"><label><font size="3">Name Course*</font></label>
 									   <input name="Ncourse" type="text" class="form-control"  value="{{$c->Ncourse}}" required></p>
-									
-									   <p class="col-md-6" align="left"><label ><font size="3">Subject*</font></label> 
+
+									   <p class="col-md-6" align="left"><label ><font size="3">Subject*</font></label>
                               <input name="subject" type="text" class="form-control"  value="{{$c->subject}}" required></p>
-                                    
+
                               <p class="col-md-6" align="left"><label for="">Number of students accepted*</label>
                               <input name="maxStudent" type="number" class="form-control" value="{{$c->max_student}}" required></p>
 
@@ -295,7 +295,7 @@ http://www.tooplate.com/view/2082-pure-mix
 	                    	      <input type="text" name="day" class="form-control" required  value="{{$c->day}}" ></p>
 
 
-									   <p class="col-md-6" align="left"><label ><font size="3">Start time*</font></label> 
+									   <p class="col-md-6" align="left"><label ><font size="3">Start time*</font></label>
 									   <input name="stime" type="time" class="form-control"  value="{{$c->start_time}}" required></p>
 
 									   <p class="col-md-6" align="left"><label ><font size="3">End time*</font></label>
@@ -318,10 +318,10 @@ http://www.tooplate.com/view/2082-pure-mix
 
                               <p class="col-md-12" align="left"></p>
 									   <input style="width:40%;margin-left:300px;" type="submit" class="button col-md-6" align="center" value="Save">
-								   
+
                            </div>
-                        </form>	
-                        <button style="width:39%;margin-left:315px;" class="button btn" onclick="window.location.href = '{{url('/course')}}';">Cancle</button>	
+                        </form>
+                        <button style="width:39%;margin-left:315px;" class="button btn" onclick="window.location.href = '{{url('/course')}}';">Cancle</button>
 							</div>
 						</div>
 				</div>
@@ -335,7 +335,7 @@ http://www.tooplate.com/view/2082-pure-mix
 <script type="text/javascript">
 
    function fncAction1(idTutor) {
-      window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
+      window.location.assign("{{URL::to('/Profile?idTutor=')}}" + idTutor);
    }
 
 </script>
@@ -363,7 +363,7 @@ http://www.tooplate.com/view/2082-pure-mix
 </footer>
 
 
-<!-- Javascript 
+<!-- Javascript
 
 ================================================== -->
 <script src="js/jquery.js"></script>
