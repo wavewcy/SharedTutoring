@@ -187,27 +187,95 @@ http://www.tooplate.com/view/2082-pure-mix
    <section id="contact">
       <div class="container">
          <div class="row">
-            <div class="wow fadeInUp col-md-6" data-wow-delay="1.6s">
+            <div class="wow fadeInUp col-md-12" data-wow-delay="1.6s">
                <h1>add your course</h1>
                <div class="contact-form">
                   <form id="contact-form" method="POST" action="{{ URL::to('/course/add/check') }}" enctype="multipart/form-data">
                      {{csrf_field()}}
                      <h3>Choose Picture</h3>
                      <input type="file" onchange="readURL(this);" name="image" accept="image/jpg,image/jpeg,image/png,application/pdf" data-multiple-caption="{count} files selected" multiple />
-                     <input name="Ncourse" type="name" class="form-control" maxlength="45" placeholder="Course Name" required>
-                     <input name="subject" type="name" class="form-control" placeholder="Subject" required>
-                     <input name="maxStudent" type="number" class="form-control" placeholder="Number of students accepted" required>
-                     <input name="day" type="text" class="form-control" placeholder="Day" required>
-                     <h3>Start Time</h3><input name="stime" type="time" class="form-control col-md-6" placeholder="Start Time" required>
-                     <h3>End Time</h3><input name="etime" type="time" class="form-control col-md-6" placeholder="End Time" required>
-                     <h3>Start Date</h3><input name="startDate" type="Date" class="form-control col-md-6" placeholder="Start Date" required>
-                     <h3>End Date</h3><input name="endDate" type="Date" class="form-control col-md-6" placeholder="End Date" required>
-                     <input name="location" type="text" class="form-control" maxlength="45" placeholder="Location" required>
-                     <input name="price" type="number" class="form-control" placeholder="Price per course (Bath)" required>
-                     <textarea name="message" class="form-control" placeholder="Course Description" rows="4" required></textarea>
-                     <div class="contact-submit">
-                        <input type="submit" class="form-control submit" value="SAVE">
+                     
+                     <div class="col-md-12">
+                        <label for="firstName">
+							   	<font size="3">Course Name*</font>
+							   </label>
+                        <input name="Ncourse" type="name" class="form-control" maxlength="45" placeholder="Course Name" required>
                      </div>
+
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">Subject*</font>
+                        </label>
+                        <input name="subject" type="name" class="form-control" placeholder="Subject" required>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">Max student*</font>
+                        </label>
+                        <input name="maxStudent" type="number" class="form-control" placeholder="Number of students" required>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">Day*</font>
+                        </label>
+                     <input name="day" type="text" class="form-control" placeholder="Mon-Fri" required>
+                     </div>
+
+                     <div class="col-md-3">
+                        <label for="firstName">
+                           <font size="3">Start time*</font>
+                        </label>
+                     <input name="stime" type="time" class="form-control col-md-6" placeholder="Start Time" required>
+                     </div>
+
+                     <div class="col-md-3">
+                        <label for="firstName">
+                           <font size="3">End time*</font>
+                        </label>
+                     <input name="etime" type="time" class="form-control col-md-6" placeholder="End Time" required>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">Start time*</font>
+                        </label>
+                     <input name="startDate" type="Date" class="form-control col-md-6" placeholder="Start Date" required>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">End date*</font>
+                        </label>
+                     <input name="endDate" type="Date" class="form-control col-md-6" placeholder="End Date" required>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">Start time*</font>
+                        </label>
+                     <input name="location" type="text" class="form-control" maxlength="45" placeholder="Location" required>
+                     </div>
+                     
+                     <div class="col-md-6">
+                        <label for="firstName">
+                           <font size="3">Price*</font>
+                        </label>
+                     <input name="price" type="number" class="form-control" placeholder="Price per course (Bath)" required>
+                     </div>
+
+                     <div class="col-md-12">
+                        <label for="firstName">
+                           <font size="3">Description</font>
+                        </label>
+                        <textarea name="message" class="form-control" placeholder="Course Description" rows="4" ></textarea>
+                     </div>  
+
+                     <div class="contact-submit col-md-12" style="width:100%;margin-bottom:30px;">
+                        <input type="submit" class="form-control submit" value="SUBMIT">
+                     </div>
+                     
                   </form>
                </div>
             </div>

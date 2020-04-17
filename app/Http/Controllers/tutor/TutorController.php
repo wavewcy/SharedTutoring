@@ -117,7 +117,7 @@ class TutorController extends Controller
             'img' => $image_course]
         );
 
-        return redirect('/addCourse')->with('course','Course created');
+        return redirect('/addCourse')->with('success','Course created');
     }
 
     public function showProfile(request $request){

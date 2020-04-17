@@ -37,7 +37,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
    <!-- Site title
    ================================================== -->
-   <title>Your Profile</title>
+   <title>Tutor Profile</title>
 
    <!-- Bootstrap CSS
    ================================================== -->
