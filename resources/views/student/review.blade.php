@@ -245,40 +245,49 @@ http://www.tooplate.com/view/2082-pure-mix
                     </section>
                 </div>
                 <div class="col-md-6 col-sm-4" style="top:-40px;">
-                    <div class="contact-form" > 
-                        <form id="contact-form" method="get" action="{{ URL::to('/review/add') }} ">
-                            <div class="tutorName"></div>
-                                <h3>Course</h3>
-                                <select name="course" id="soflow-color" onchange="addReview()" >
-                                    <option value="">เลือกคอร์ส</option>
+                    <div class="contact-form" >
+                        @if ( $list != [])
+                            <form id="contact-form" method="get" action="{{ URL::to('/review/add') }} ">
+                                <div class="tutorName"></div>
+                                    <h3>Course</h3>
+                                    <select name="course" id="soflow-color" onchange="addReview()" >
+
+                                            <option value="">เลือกคอร์ส</option>
+
                                         @foreach ($list as $l)
                                             <option value="{{$l->idcourse}}">{{$l->idcourse}} - {{$l->Ncourse}}</option>
                                         @endforeach
-                                </select>
-                            </div>
-                            @foreach ($list as $l)
-                                <input type="hidden" id="1-{{$l->idcourse}}" name="idTutor" value="{{$l->idTutor}}" disabled>
-                                <input type="hidden" id="2-{{$l->idcourse}}" name="idCourse" value="{{$l->idcourse}}" disabled>
-                            @endforeach
-                            <br>
-                            <div class="rate">
-                                <h3>Rate</h3>
-                                <fieldset class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="สอนดีมาก ไม่เรียนไม่ได้แล้ว"></label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="ภูมิใจนำเสนอ"></label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="ก็โอเคอยู่นะ"></label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="เฉยๆ"></label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="สอนเป็นปะเนี่ย"></label>
-                                </fieldset>
-                            </div>
-                            <br><br><br>
-                            <h3>Comment</h3>
-                            <div class="comment" align="center">
-                                <textarea name="review-comment" id="" cols="54" rows="2"></textarea>
-                            </div>
-                            <input type="submit" class="btn" style="width:95%" name="view" value="Send">
-                            <br><br>
-                        </form>
+                                    </select>
+                                </div>
+                                @foreach ($list as $l)
+                                    <input type="hidden" id="1-{{$l->idcourse}}" name="idTutor" value="{{$l->idTutor}}" disabled>
+                                    <input type="hidden" id="2-{{$l->idcourse}}" name="idCourse" value="{{$l->idcourse}}" disabled>
+                                @endforeach
+                                <br>
+                                <div class="rate">
+                                    <h3>Rate</h3>
+                                    <fieldset class="rating">
+                                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="สอนดีมาก ไม่เรียนไม่ได้แล้ว"></label>
+                                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="ภูมิใจนำเสนอ"></label>
+                                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="ก็โอเคอยู่นะ"></label>
+                                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="เฉยๆ"></label>
+                                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="สอนเป็นปะเนี่ย"></label>
+                                    </fieldset>
+                                </div>
+                                <br><br><br>
+                                <h3>Comment</h3>
+                                <div class="comment" align="center">
+                                    <textarea name="review-comment" id="" cols="54" rows="2"></textarea>
+                                </div>
+                                <input type="submit" class="btn" style="width:95%" name="view" value="Send">
+                                <br><br>
+                            </form>
+                        @else
+                            <h1>ไม่มีคอร์สที่สามารถรีวิวได้</h1>
+                            <input type="submit" class="btn" style="width:95%" name="view" value="Home">
+
+                        @endif
+
                     </div>
                 </div>
 		  </div>
