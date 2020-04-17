@@ -101,7 +101,6 @@ class CourseController extends Controller
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
 
-
         return view('/course/home',['courses' => $courses,'students'=>$students]);
     }
 
