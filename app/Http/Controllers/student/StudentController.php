@@ -105,22 +105,19 @@ class StudentController extends Controller
                 ['name' =>$Fname,
                 'email' => $email,]
             );
-            
             return redirect('/studentEdit')->with('success','success update');
         }
     }
 
     public function reviewFrom(){
         $id = Auth::id();
-        // $list = DB::table('enroll')->join('tutors','enroll.idTutor','=','tutors.idTutor')
-        // ->join('courses','enroll.idcourse','=','courses.idcourse')
-        // ->where(['idStudent' => $id])->distinct('enroll.idcourse')->get();
 
         $list = DB::select("SELECT * FROM enroll
                 LEFT JOIN tutors ON enroll.idTutor = tutors.idTutor
                 LEFT JOIN courses ON enroll.idcourse = courses.idcourse
                 WHERE enroll.idstudent = '$id'
-                AND courses.end_date < CURRENT_DATE()");
+                AND courses.end_date < CURRENT_DATE()
+                AND courses.idcourse NOT IN( SELECT idcourse FROM review WHERE idstudent = '$id' )");
 
         return view('student.review', ['list' => $list]);
     }
