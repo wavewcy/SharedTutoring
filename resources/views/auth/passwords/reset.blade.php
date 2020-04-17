@@ -35,19 +35,19 @@ http://www.tooplate.com/view/2082-pure-mix
    ================================================== -->
 	<link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
 
-	<!-- Google web font 
-   ================================================== -->	
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>	
-   
+	<!-- Google web font
+   ================================================== -->
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
+
    <!-- sweet alert
-   ================================================== -->	
+   ================================================== -->
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <!-- sweet 2 -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 	<style>
 		body {
-  			font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  			font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 	</style>
 </head>
@@ -198,7 +198,7 @@ http://www.tooplate.com/view/2082-pure-mix
 				</div>
 			</div>
 		</div>
-	</section>		
+	</section>
 </section>
 
 
@@ -219,13 +219,13 @@ http://www.tooplate.com/view/2082-pure-mix
 					<li><a href="#" class="fa fa-google-plus"></a></li>
 				</ul>
 			</div>
-			
+
 		</div>
 	</div>
 </footer>
 
 
-<!-- Javascript 
+<!-- Javascript
 ================================================== -->
 <script src="{{ URL::asset('js/jquery.js') }}"></script>
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>

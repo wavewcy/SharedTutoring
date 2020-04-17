@@ -36,10 +36,10 @@ http://www.tooplate.com/view/2082-pure-mix
 	<link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
 
-	<!-- Google web font 
-   ================================================== -->	
+	<!-- Google web font
+   ================================================== -->
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
-	
+
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
@@ -56,7 +56,7 @@ http://www.tooplate.com/view/2082-pure-mix
             position: relative;
 						z-index: 2;
 					}
-					
+
 .above{
 	margin-top: 5px;
 	font-size:14px;
@@ -76,7 +76,7 @@ http://www.tooplate.com/view/2082-pure-mix
 	margin-top: -0.2px;
 	border-radius: 0px;
 	width:30%;
-	
+
 }
 
 
@@ -107,7 +107,7 @@ http://www.tooplate.com/view/2082-pure-mix
     padding-left: 15px;
     margin-top: 20px; }
     .avartar-picker .inputfile {
-      display: none; 
+      display: none;
     }
     .avartar-picker label {
       display: block;
@@ -159,7 +159,7 @@ http://www.tooplate.com/view/2082-pure-mix
               <div class="navicon">
 			  		@if (Auth:: check())
                      	<h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                  	@endif  
+                  	@endif
                   <div class="menu-container">
                      <div class="circle dark inline">
                         <i class="icon ion-navicon"></i>
@@ -234,7 +234,7 @@ http://www.tooplate.com/view/2082-pure-mix
   text: 'Input all requied field!'
 })
 				</script>
-    
+
 			@endif
 			@if (Session('pass'))
       <script type="text/javascript">
@@ -297,22 +297,22 @@ http://www.tooplate.com/view/2082-pure-mix
 								<div class="col-md-6" align="center">
 										<br>
 										<p ><img id="blah" src="images/imageProfile/{{$image[0]->img_path}}" onerror="this.src='images/user.png'" style="width:100%;max-width:200px;border-radius: 50%;"></p>
-										<input type="file"  onchange="readURL(this);" name="image" id="file-1" class="inputfile" style="display:none;" 
-										accept="image/jpg,image/jpeg,image/png,application/pdf" 
+										<input type="file"  onchange="readURL(this);" name="image" id="file-1" class="inputfile" style="display:none;"
+										accept="image/jpg,image/jpeg,image/png,application/pdf"
 										data-multiple-caption="{count} files selected" multiple />
 										<label for="file-1">
 										<i class="zmdi zmdi-camera"></i>
 										<span style="font-size:23px;">Choose Picture</span>
 										</label>
 									</div>
-								
+
 									<br>
-									<p class="col-md-6" align="left"><label><font size="3">First name*</font></label> 
+									<p class="col-md-6" align="left"><label><font size="3">First name*</font></label>
 									<input name="Fname" type="text" class="form-control"  value="{{$tu->Fname}}" required></p>
-									
-									<p class="col-md-6" align="left"><label ><font size="3">Last name*</font></label> 
+
+									<p class="col-md-6" align="left"><label ><font size="3">Last name*</font></label>
 									<input name="Lname" type="text" class="form-control"  value="{{$tu->Lname}}" required></p>
-								
+
 									<p class="col-md-6" align="left"><label for="">Gender *</label>
 									<i class="zmdi zmdi-caret-down"></i>
 									<select name="gender" class="form-control"  value="{{$tu->sex}}" required>
@@ -326,7 +326,7 @@ http://www.tooplate.com/view/2082-pure-mix
 	                    			<input type="date" name="DOB" class="form-control" required  value="{{$tu->DOB}}" >
 									</p>
 
-									<p class="col-md-6" align="left"><label ><font size="3">Address*</font></label> 
+									<p class="col-md-6" align="left"><label ><font size="3">Address*</font></label>
 									<input name="addr" type="text" class="form-control"  value="{{$tu->address}}" required></p>
 
 									<p class="col-md-6" align="left"><label >Email*</label>
@@ -337,32 +337,32 @@ http://www.tooplate.com/view/2082-pure-mix
 
 									<p class="col-md-6" align="left"><label>Education*</label>
 									<input type="text" name="education" class="form-control" value="{{$tu->education}}" required ></p>
-												
+
 									<p class="col-md-6" align="left"><label>Partner*</label>
 									<input type="text" name="partner" class="form-control" value="{{$tu->partner}}" required></p>
-												
+
 									<p class="col-md-6" align="left"><label>Work experient*</label>
 									<input type="comment" name="work"  class="form-control" placeholder="{{$tu->work_experient}}" value="{{$tu->work_experient}}" style="height: 70px"></input>
 
 									<p class="col-md-6" align="left"><label>About me*</label>
 									<input type="comment" name="about"  class="form-control" placeholder="{{$tu->about_me}}" value="{{$tu->about_me}}" style="height: 70px"></input>
-	
+
 									<p class="col-md-12" align="left"></p>
 									<input style="width:40%;margin-left:315px;" type="submit" class="button col-md-6" align="center" value="Save">
-							
+
 								</form>
-								<button style="width:40%;margin-left:315px;" align="center" class="button btn" onclick="fncAction1({{Auth:: user()->id}})">Cancle</button>	
+								<button style="width:40%;margin-left:315px;" align="center" class="button btn" onclick="fncAction1({{Auth:: user()->id}})">Cancle</button>
 							</div>
 						</div>
 				</div>
 		</div><br /><br /><br />
-		
+
 	</section>
-@endforeach    
-		  
+@endforeach
+
 <script type="text/javascript">
       function fncAction1(idTutor) {
-         window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
+         window.location.assign("{{URL::to('/Profile?idTutor=')}}" + idTutor);
       }
 </script>
 
@@ -382,12 +382,12 @@ http://www.tooplate.com/view/2082-pure-mix
 					<li><a href="#" class="fa fa-google-plus"></a></li>
 				</ul>
 			</div>
-			
+
 		</div>
 	</div>
 </footer>
 
-<!-- Javascript 
+<!-- Javascript
 ================================================== -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -427,7 +427,7 @@ if (input.attr("type") == "password") {
         }
 </script>
 
-       
+
 
 @include('sweet::alert')
 </body>

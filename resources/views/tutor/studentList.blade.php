@@ -35,10 +35,10 @@ http://www.tooplate.com/view/2082-pure-mix
    ================================================== -->
 	<link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 
-	<!-- Google web font 
-   ================================================== -->	
+	<!-- Google web font
+   ================================================== -->
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/select2.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/util.css') }}">
@@ -73,7 +73,7 @@ http://www.tooplate.com/view/2082-pure-mix
                <div class="navicon">
                   @if (Auth:: check())
                      <h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                  @endif  
+                  @endif
                   <div class="menu-container">
                      <div class="circle dark inline">
                         <i class="icon ion-navicon"></i>
@@ -146,7 +146,7 @@ http://www.tooplate.com/view/2082-pure-mix
           </div>
 			</div>
 		</div>
-	</div>		
+	</div>
 </section>
 
 
@@ -196,13 +196,13 @@ http://www.tooplate.com/view/2082-pure-mix
         <div id="outer">
             <button onclick="window.location.href = '{{url('/course')}}';" class="button button2 backBtn">back</button><br><br>
         </div>
-        
+
     </div>
-    
+
 </div>
 
 <script type="text/javascript">
-	
+
 	function fncAction0(idstudent){
 		swal({
 			title: "Are you sure?",
@@ -215,7 +215,7 @@ http://www.tooplate.com/view/2082-pure-mix
 			if (willDelete) {
 				swal("Success! The student has been delete!", {icon: "success"});
 				setTimeout(function(){
-					window.location.assign("/SE_Project/public/course/studentList/deleted?idstudent="+idstudent);
+					window.location.assign("{{URL::to('/course/studentList/deleted?idstudent=')}}"+idstudent);
 				},2000);
 			} else {
 				swal("The student is safe!");
@@ -229,9 +229,9 @@ http://www.tooplate.com/view/2082-pure-mix
 <!-- javascript section
 ================================================== -->
 <script type="text/javascript">
-   
+
    function fncAction1(idTutor){
-		window.location.assign("/SE_Project/public/Profile?idTutor="+idTutor);
+		window.location.assign("{{URL::to('/Profile?idTutor=')}}"+idTutor);
 	}
 
 </script>
@@ -252,12 +252,12 @@ http://www.tooplate.com/view/2082-pure-mix
 					<li><a href="#" class="fa fa-google-plus"></a></li>
 				</ul>
 			</div>
-			
+
 		</div>
 	</div>
 </footer>
 
-<!-- Javascript 
+<!-- Javascript
 ================================================== -->
 <script src="{{ URL::asset('js/jquery.js') }}"></script>
 <script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>

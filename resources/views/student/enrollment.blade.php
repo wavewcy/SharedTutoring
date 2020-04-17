@@ -184,7 +184,7 @@ http://www.tooplate.com/view/2082-pure-mix
 								<br>
 								</div>
 								<div class="col-md-9"style="top:35px;">
-									
+
 									<p class="col-md-6" align="left"><b>Subject :</b> {{$enroll->subject}}</p>
 									<p class="col-md-6" align="left"><b>Date :</b> {{$enroll->start_date}}&nbsp;To&nbsp;{{$enroll->end_date}}</p>
 									<p class="col-md-6" align="left"><b>Time :</b> {{$enroll->start_time}} - {{$enroll->end_time}}</p>
@@ -248,16 +248,16 @@ http://www.tooplate.com/view/2082-pure-mix
 		}).then((result) => {
 		if (result.value) {
          setTimeout(function(){
-					window.location.assign("/SE_Project/public/student/deleteCourse?idcourse="+idcourse);
+					window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse);
 				},2000);
 		}
 		});
 	}
    function fncAction0(idcourse){
-      	window.location.assign("/SE_Project/public/courseInformation?idcourse="+idcourse);
+      	window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse);
    }
    function fncAction1(idTutor){
-		window.location.assign("/SE_Project/public/Profile?idTutor="+idTutor);
+		window.location.assign("{{URL::to('/Profile?idTutor=')}}"+idTutor);
    }
 </script>
 
