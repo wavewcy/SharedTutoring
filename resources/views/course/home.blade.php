@@ -442,7 +442,7 @@ http://www.tooplate.com/view/2082-pure-mix
                         @foreach ( $courses as $c )
                         <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1.3s" style="padding-top: 25px">
                            <div class="blog-thumb">
-                              <a onclick="fncAction0({{$c->idcourse}})" class="click"><img src="images/imageCourse/{{$c->img}}" style="width:100%;max-width:300px" onerror="this.src='images/blog-img3.jpg'" class="img-responsive" alt="Blog"></a>
+                              <a onclick="fncAction0({{$c->idcourse}})" class="click"><img src="images/{{$c->img}}" style="width:100%;max-width:300px" onerror="this.src='images/blog-img3.jpg'" class="img-responsive" alt="Blog"></a>
                               <a onclick="fncAction0({{$c->idcourse}})">
                                  <h1 class="click text">{{$c->Ncourse}}</h1>
                               </a>
