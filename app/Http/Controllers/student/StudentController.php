@@ -139,7 +139,8 @@ class StudentController extends Controller
             'idcourse' => $idCourse,
             'idstudent' => $id,
             'review' => $rate,
-            'comment' => $comment]
+            'comment' => $comment,
+            'date' => now()]
         );
         return  redirect()->back()->with('pass','Review completed');
     }

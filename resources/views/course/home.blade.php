@@ -468,10 +468,10 @@ http://www.tooplate.com/view/2082-pure-mix
 ================================================== -->
 <script type="text/javascript">
    function fncAction0(idcourse) {
-      window.location.assign("/SE_Project/public/courseInformation?idcourse=" + idcourse);
+      window.location.assign("{{URL::to('/courseInformation?idcourse=')}}" + idcourse);
    }
    function fncAction1(idTutor) {
-      window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
+      window.location.assign("{{URL::to('/Profile?idTutor=')}}" + idTutor);
    }
 
 </script>

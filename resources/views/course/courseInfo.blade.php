@@ -66,7 +66,7 @@ http://www.tooplate.com/view/2082-pure-mix
                <div class="navicon">
                   @if (Auth:: check())
                      <h3 style="text-align:right;">{{ Auth::user()->name }}</h3>
-                  @endif  
+                  @endif
                   <div class="menu-container">
                      <div class="circle dark inline">
                         <i class="icon ion-navicon"></i>
@@ -146,17 +146,17 @@ http://www.tooplate.com/view/2082-pure-mix
 <section id="blog">
     <div class="container">
         <div class="row" >
-            <div class="wow fadeInUp wrapper col-md-12 col-sm-12" data-wow-delay="1.2s">           
+            <div class="wow fadeInUp wrapper col-md-12 col-sm-12" data-wow-delay="1.2s">
                <div class="blog-thumb main col-md-8">
                   <div class="card col-md-12" >
                      <br>
                      <div class="col-md-7">
                         <img src="images/{{$course[0]->img}}" onerror="this.src='images/blog-img3.jpg'" class="img-responsive" alt="Blog"></a>
-                     </div> 
+                     </div>
                      <div class="col-md-5">
                         <div class="center">
                            <h1>{{$course[0]->Ncourse}}</h1>
-                        </div> 
+                        </div>
                      </div>
                   </div>
 
@@ -183,21 +183,21 @@ http://www.tooplate.com/view/2082-pure-mix
                      <p>{{$course[0]->start_date}} ~ {{$course[0]->end_date}}</p>
                      <hr>
                      <h3><b>Schedue</b></h3>
-                     <p>{{$course[0]->day}}<br>{{$startTime}} - {{$endTime}}</p> 
+                     <p>{{$course[0]->day}}<br>{{$startTime}} - {{$endTime}}</p>
                      <hr>
                      <h3><b>Price</b></h3>
                      <p>{{$course[0]->price}} Bath</p>
                   </div>
-               </div> 
-               
+               </div>
+
                <div class="sidebar col-md-12">
                   <div class="card col-md-12">
                      <br>
                      <div class="col-md-5">
                         <img src="images/imageProfile/{{$imageTutor}}" onerror="this.src='images/user.png'" style="border-radius: 50%; width:100%;max-width:100px">
-                     </div> 
+                     </div>
                      <div class="col-md-7">
-                        <a class="click" onClick="fncAction1({{$tutor[0]->idTutor}})"><p><b>{{$tutor[0]->Fname}}<br>{{$tutor[0]->Lname}}</b></p></a> <!-- link ไป profile tutor -->                
+                        <a class="click" onClick="fncAction1({{$tutor[0]->idTutor}})"><p><b>{{$tutor[0]->Fname}}<br>{{$tutor[0]->Lname}}</b></p></a> <!-- link ไป profile tutor -->
                         <?php
                            if ($avgReview>=0 and $avgReview<0.5){
                               echo ' <span class="fa fa-star-o"></span>';
@@ -279,15 +279,15 @@ http://www.tooplate.com/view/2082-pure-mix
                            echo '<span style="color: #777;font-size: 14px;letter-spacing:1px">(', $nReview, ')</span>';
                         ?>
                      </div>
-                     
+
                      <div class="col-md-7">
                         <br>
                         <p><b>Sex : </b>{{$tutor[0]->sex}}</p>
-                     </div> 
+                     </div>
                      <div class="col-md-5">
                         <br>
                         <p><b>Age : </b>{{$age}}</p>
-                     </div> 
+                     </div>
                      <div class="col-md-12">
                         <p><b>Partner : </b>{{$tutor[0]->partner}}</p>
                         <p><b>Education : </b>{{$tutor[0]->education}}</p>
@@ -303,11 +303,11 @@ http://www.tooplate.com/view/2082-pure-mix
                               <button style="width:100%"class="btn button button1" onClick="fncAction0({{$course[0]->idcourse}})">Enroll</button>
                            @endif
                         @endif
-                     @endif 
-                     <button style="width:100%"class="btn button button2" onClick="javascript:history.go(-1)">Back</button>  
+                     @endif
+                     <button style="width:100%"class="btn button button2" onClick="javascript:history.go(-1)">Back</button>
                   </div>
                </div>
-               
+
             </div>
         </div>
     </div><br /><br /><br />
@@ -329,16 +329,16 @@ http://www.tooplate.com/view/2082-pure-mix
 			if (willDelete) {
 				swal("Poof! You have just enrolled this course!", {icon: "success"});
 				setTimeout(function(){
-					window.location.assign("/SE_Project/public/courseInformation/enrolled?idcourse="+idcourse);
+					window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse);
 				},2000);
 			} else {
 				swal("Cancel !");
 			}
 		});
 	}
-   
+
    function fncAction1(idTutor){
-		window.location.assign("/SE_Project/public/Profile?idTutor="+idTutor);
+		window.location.assign("{{URL::to('/Profile?idTutor=')}}"+idTutor);
 	}
 
 </script>

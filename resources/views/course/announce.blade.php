@@ -270,7 +270,7 @@ text: 'Success!!'
                                  <li><a href="{{url('/Profile')}}">Profile</a></li>
                                  <li><a href="{{url('/course')}}">Tutor Course</a></li>
 
-         
+
                               @endif
 
                            <li><a class="dropdown-item" href="{{ route('logout') }}"
@@ -307,7 +307,7 @@ text: 'Success!!'
 
 
 
-                              
+
 
 <!-- Header section
 ================================================== -->
@@ -337,12 +337,12 @@ text: 'Success!!'
                                        <option>หญิง</option>
                                     </select>
                                  </div>
-                                
+
                                 <label for="phone"><font size="3">Phone*</font></label>
                                 <input name="phone" type="text" class="form-control" minlength=10 maxlength=10 placeholder="เบอร์ติดต่อ" required>
 
                                 <!-- <div class="contact-submit"> -->
-                                
+
                                 <div class="col-md-6 col-sm-4">
                                     <input type="submit" class="form-control submit" value="Submit" >
                                 </div>
@@ -355,9 +355,9 @@ text: 'Success!!'
                     </div>
                 </div>
             </div>
-        
+
             <div class="pull-right" style="width:450px;">
-            
+
                 <div class ="card col-md-12 shadow-sm">
                     <div class="scrollbar  scrollbar-gray">
                     <div class="force-overflow">
@@ -377,8 +377,8 @@ text: 'Success!!'
                             <p class="col-md-12" align="left">Location : {{$Ann->location}}</p>
                             <p class="col-md-12" align="left">Contact : {{$Ann->contact}}</p>
                             <p class="col-md-12" align="right">{{$Ann->date}}</p>
-                            <hr color="black" width = "90%">      
-                            </div>                                                                    
+                            <hr color="black" width = "90%">
+                            </div>
                             @endforeach
                         @else
                             <br><br>
@@ -414,14 +414,14 @@ text: 'Success!!'
          </div>
       </div>
    </footer>
-  
+
 
    <!-- javascript section
 ================================================== -->
 <script type="text/javascript">
 
    function fncAction0(idcourse){
-      window.location.assign("/SE_Project/public/courseInformation?idcourse="+idcourse); //เติม path ไปหา edit course
+      window.location.assign("{{URL::to('/courseInformation?idcourse=')}}"+idcourse); //เติม path ไปหา edit course
    }
 
    function fncAction (idAnnounce){
@@ -436,7 +436,7 @@ text: 'Success!!'
             }).then((result) => {
             if (result.value) {
                setTimeout(function(){
-                     window.location.assign("/SE_Project/public/announce/delete?idAnnounce="+idAnnounce);
+                     window.location.assign("{{URL::to('/announce/delete?idAnnounce=')}}"+idAnnounce);
                   },2000);
             }
             });
@@ -488,7 +488,7 @@ text: 'Success!!'
         $('#province').prop('selectedIndex',0);
     }
 
-      
+
 
 </script>
 
