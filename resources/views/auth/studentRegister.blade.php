@@ -154,7 +154,6 @@ http://www.tooplate.com/view/2082-pure-mix
 							<li><a href="{{url('/')}}">Home</a></li>
 							<li><a href="{{url('/login')}}">Log-in</a></li>
 							<li><a href="{{url('/register')}}">Register</a></li>
-							<li><a href="{{url('/contact')}}">Contact</a></li>
                       </ul>
                     </div>
                   </div>
@@ -252,10 +251,6 @@ http://www.tooplate.com/view/2082-pure-mix
 							<input id="password-field" type="password" class="form-control" name="password"  required minlength=8>
 							<span style="font-size: 22px;" toggle=" #password-field"  class="fa fa-fw fa-eye field-icon toggle-password"></span>
 
-
-
-
-
 					<!-- <div class="contact-submit"> -->
 						<div class="col-md-6 col-sm-4">
 							<input type="submit" class="form-control submit" value="Create account" onClick="this.form.action='{{ URL::to('/studentReg/check') }}'; submit()">
@@ -334,10 +329,6 @@ if (input.attr("type") == "password") {
 }
 });
 </script>
-
-
-
-
 
 @include('sweet::alert')
 </body>

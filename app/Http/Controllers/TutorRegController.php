@@ -51,8 +51,6 @@ class TutorRegController extends Controller
             $Efile -> move('images/idCard',$evidence);
         }
 
-
-
         $tId=Tutor::max('idTutor');
         if($tId === null){$tId = 0 ;}
         $TutorId=($tId +2);
@@ -87,7 +85,7 @@ class TutorRegController extends Controller
            'partner' => $partner,
            'rating' => 0,
            'password' => Hash::make($pass),
-           'passReal' => $pass]
+           ]
         );
 
         $images = DB::table('image')->insert(
@@ -132,9 +130,6 @@ class TutorRegController extends Controller
             $image_card = $file -> getClientOriginalName();
             $file -> move('images/imageProfile',$image_card);
         }
-
-        $data = DB::select('select email from tutors where email=? ',[$email]);
-        
         if($Fname === null or $Lname === null or $email === null or $phone === null 
         or $sex === null or $addr === null or $education === null or $DOB === null ) 
        {
@@ -142,6 +137,22 @@ class TutorRegController extends Controller
     }
     else
     {
+        $haveEmail = DB::table('tutors')->where(['email' => $email])->exists();
+
+             $tEmail = DB::table('tutors')
+         ->select('email')
+         ->where([
+             ['idTutor','=', $idTutor],
+            ['email', '=', $email]
+         ])->get();
+
+         if ($haveEmail) {
+             if($tEmail == "[]"){
+                    return redirect()->back()->with('haveEmail', 'The course name has already in use.');
+             }
+
+             }
+
         if($image_card === null){
             $tutor = DB::table('tutors')
             ->where(['idTutor' => $idTutor])

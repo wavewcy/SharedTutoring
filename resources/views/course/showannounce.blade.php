@@ -106,7 +106,7 @@ display:block;
 								<!-- tutor -->
                                 @elseif ( Auth:: user()->status == 'tutor')
                                     <li><a href="{{url('/')}}">Home</a></li>
-									<li><a href="{{url('/Profile')}}">Tutor Profile</a></li>
+									<li><a href="{{url('/Profile')}}">Profile</a></li>
                                  	<li><a href="{{url('/course')}}">Tutor course</a></li>
 								<!-- admin -->
 								@else

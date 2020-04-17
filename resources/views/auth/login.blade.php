@@ -90,7 +90,6 @@ http://www.tooplate.com/view/2082-pure-mix
 							<li><a href="{{url('/')}}">Home</a></li>
 							<li><a href="{{url('/login')}}">Log-in</a></li>
 							<li><a href="{{url('/register')}}">Register</a></li>
-							<li><a href="{{url('/contact')}}">Contact</a></li>
                       </ul>
                     </div>
                   </div>
@@ -134,8 +133,9 @@ http://www.tooplate.com/view/2082-pure-mix
 											})
 									</script>
                                 @enderror
-
-								<input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+													
+								<input id="password-field" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+								<span style="font-size: 22px;float:right;margin-top:-50px;" toggle=" #password-field"  class="fa fa-fw fa-eye field-icon toggle-password"></span>
 								@error('password')
 									<script type="text/javascript">
 										swal("Oops!", "Pleass try agin", "error");
@@ -193,6 +193,19 @@ http://www.tooplate.com/view/2082-pure-mix
 <script src="js/bootstrap.min.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/custom.js"></script>
+
+<script>
+	$(".toggle-password").click(function() {
+
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+	input.attr("type", "text");
+} else {
+	input.attr("type", "password");
+}
+});
+</script>
 
 </body>
 </html>
