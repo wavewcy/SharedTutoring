@@ -80,7 +80,9 @@ class CourseController extends Controller
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
 
-        return view('/course/home',['courses' => $courses,'students'=>$students]);
+        $maxprice = DB::select("SELECT MAX(price) as max FROM courses");
+
+        return view('/course/home',['courses' => $courses,'students'=>$students,'maxprice'=>$maxprice]);
     }
 
     public function courseShow(){
@@ -101,7 +103,9 @@ class CourseController extends Controller
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
 
-        return view('/course/home',['courses' => $courses,'students'=>$students]);
+        $maxprice = DB::select("SELECT MAX(price) as max FROM courses");
+
+        return view('/course/home',['courses' => $courses,'students'=>$students,'maxprice'=>$maxprice]);
     }
 
     public function info(request $request){

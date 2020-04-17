@@ -253,7 +253,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
                      <div class="col-md-6">
                         <label for="firstName">
-                           <font size="3">Start time*</font>
+                           <font size="3">Location*</font>
                         </label>
                      <input name="location" type="text" class="form-control" maxlength="45" placeholder="Location" required>
                      </div>

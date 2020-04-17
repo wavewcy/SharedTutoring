@@ -25,9 +25,9 @@ http://www.tooplate.com/view/2082-pure-mix
             orientation: "horizontal",
             range: true,
             min: 0,
-            max: 3500,
+            max: {{ $maxprice[0]->max }},
             step: 100,
-            values: [0, 3500],
+            values: [0, {{ $maxprice[0]->max }}],
 
             slide: function(event, ui) {
                $("#min").val(ui.values[0]);
@@ -293,9 +293,9 @@ http://www.tooplate.com/view/2082-pure-mix
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <form id="filter-form" action="{{ URL::to('/filter') }} " method="get">
                         <p>
-                           <label for="amount">Price range:</label>
+                        <label for="amount">Price range:</label>
                            <input id="min" type="hidden" value='0' name="min">
-                           <input id="max" type="hidden" value='3500' name="max">
+                           <input id="max" type="hidden" value={{ $maxprice[0]->max }} name="max">
                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                         </p>
                         <div id="slider-range"></div>
@@ -427,6 +427,10 @@ http://www.tooplate.com/view/2082-pure-mix
                   <!-- iso box section -->
                   <div class="container">
                      <div class="row">
+
+                        @if ( $courses == '[]')
+                            <h1>ไม่พบคอร์สที่ต้องการ</h1>
+                        @endif
                         @foreach ( $courses as $c )
                         <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="1.3s" style="padding-top: 25px">
                            <div class="blog-thumb">
