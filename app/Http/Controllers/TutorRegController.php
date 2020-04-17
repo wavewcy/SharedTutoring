@@ -52,8 +52,8 @@ class TutorRegController extends Controller
         }
 
         $tId=Tutor::max('idTutor');
-        if($tId === null){$tId = 0 ;}
-        $TutorId=($tId +2);
+        if($tId === null){$tId = 10000 ;}
+        $TutorId=($tId +1);
 
     $data = DB::select('select email from tutors where email=? ',[$email]);
 

@@ -205,7 +205,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
 	function fncAction0(idcourse){
 
-		window.location.replace("{{URL::to('/courseInformation?idcourse=')}}"+idcourse); //เติม path ไปหา edit course
+		window.location.assign("{{URL::to('/courseEdit?idcourse=')}}"+idcourse); //เติม path ไปหา edit course
 
 	}
 
