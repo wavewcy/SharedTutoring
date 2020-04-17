@@ -66,12 +66,12 @@ http://www.tooplate.com/view/2082-pure-mix
 
    </div>
    <div class="wrapper">
-      @if (Session('null'))
+      @if (Session('haveName'))
       <script type="text/javascript">
          Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Input all requied field!'
+            text: 'The course name has already in use.'
          })
       </script>
 
@@ -239,7 +239,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
                      <div class="col-md-6">
                         <label for="firstName">
-                           <font size="3">Start time*</font>
+                           <font size="3">Start date*</font>
                         </label>
                      <input name="startDate" type="Date" class="form-control col-md-6" placeholder="Start Date" required>
                      </div>
@@ -253,7 +253,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
                      <div class="col-md-6">
                         <label for="firstName">
-                           <font size="3">Start time*</font>
+                           <font size="3">Location*</font>
                         </label>
                      <input name="location" type="text" class="form-control" maxlength="45" placeholder="Location" required>
                      </div>

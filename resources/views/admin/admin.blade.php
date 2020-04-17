@@ -159,11 +159,8 @@ http://www.tooplate.com/view/2082-pure-mix
 											<br>
 											<img src="images/imageProfile/{{$idCard->img_path}}" onerror="this.src='images/user.png'" style="width:100%;max-width:100px"></p>
 											<br>
-											<form method="get" action="{{URL::to('/admin/image')}}">
-												<input type="hidden" name="image" id="image" value="{{$idCard->img_IDcard}}">
-												<p align="center"><b>IDcard :</b>
-												<input type="button" class="button button0" value="IDcard" onClick="this.form.action='{{ URL::to('/admin/image') }}'; submit()">
-											</form>
+											<p align="center"><b>IDcard :</b>
+											<button class="button button0"onClick="fncAction0({{$tutor->idTutor}})" class="button btn2">IDcard</button>
 										</div>
 									@endif
 								@endforeach

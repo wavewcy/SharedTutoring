@@ -18,15 +18,16 @@ class CourseController extends Controller
 
     public function welcome(){
         $tutors = DB::table('tutors')->orderBy('rating','desc')->take(3)->get();
-        
+        $today = Carbon::today();
         $id = Auth::id();
         if(Auth:: check() && Auth:: user()->status == 'student'){
             $courses = DB::select("SELECT * FROM courses
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
-                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
+                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')
+                                    and ? <= start_date",[$today->format('Y-m-d')]);
         }else{
-            $today = Carbon::today();
-            $courses = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+           
+            $courses = DB::SELECT('SELECT * FROM courses join tutors using (idTutor)
             where ? <= start_date',[$today->format('Y-m-d')]);
         }
         
@@ -85,14 +86,14 @@ class CourseController extends Controller
 
     public function courseShow(){
         $id = Auth::id();
-
+        $today = Carbon::today();
         if(Auth:: check() && Auth:: user()->status == 'student'){
             $courses = DB::select("SELECT * FROM courses
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
-                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
+                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')
+                                    and ? <= start_date",[$today->format('Y-m-d')]);
         }else{
-            $today = Carbon::today();
-            $courses = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+            $courses = DB::SELECT('SELECT * FROM courses join tutors using (idTutor)
             where ? <= start_date',[$today->format('Y-m-d')]);
         }
 
@@ -252,7 +253,7 @@ class CourseController extends Controller
                     $file -> move('images/imageCourse',$img);
                 }
 
-            return redirect('/course')->with('success','Course created');
+            return redirect('/course')->with('edit','Course is edited');
             }
 
 

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Carbon\Carbon;
+use strtotime;
+
 
 
 class StudentController extends Controller
@@ -31,11 +34,17 @@ class StudentController extends Controller
         //     ->where(['tutor.idtutor' => [$course->idTutor]])
         //     ->get();
         // }
+        $today = Carbon::today();
 
+
+        /*$enrolls = DB::SELECT('SELECT * FROM courses join tutors using (idTutor)
+        join enroll using (idcourse)
+        where enroll.idstudent = ? and end_date > ? ',[$id,$today->format('Y-m-d')]);*/
 
         $enrolls=DB::table('enroll')->join('courses','enroll.idcourse', '=', 'courses.idcourse')
             ->join('tutors', 'tutors.idtutor', '=', 'enroll.idtutor')
             ->where(['enroll.idstudent' => $id])
+            ->whereDate('courses.end_date', '>', $today->format('Y-m-d') )
             ->get();
 
         if($enrolls != null){

@@ -40,8 +40,6 @@ http://www.tooplate.com/view/2082-pure-mix
 	<!-- Google web font
    ================================================== -->
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
-
-
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <style>
@@ -313,8 +311,8 @@ http://www.tooplate.com/view/2082-pure-mix
 									   <p class="col-md-6" align="left"><label>Price*</label>
 										<input type="number" name="price"  class="form-control" value="{{$c->price}}"  style="height: 70px" required></input>
 
-                              <p class="col-md-12" align="left"><label>Description*</label>
-								      <input type="text" name="description" class="form-control" value="{{$c->description}}" style="height: 70px" required></p>
+                              <p class="col-md-12" align="left"><label>Description</label>
+								      <input type="text" name="description" class="form-control" value="{{$c->description}}" style="height: 70px"></p>
 
                               <p class="col-md-12" align="left"></p>
 									   <input style="width:40%;margin-left:300px;" type="submit" class="button col-md-6" align="center" value="Save">
