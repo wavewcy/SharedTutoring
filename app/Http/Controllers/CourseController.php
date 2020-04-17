@@ -18,7 +18,16 @@ class CourseController extends Controller
 
     public function welcome(){
         $tutors = DB::table('tutors')->orderBy('rating','desc')->take(3)->get();
-        $courses = DB::table('courses')->join('tutors','courses.idTutor','=','tutors.idTutor')->get();
+        
+        $id = Auth::id();
+        if(Auth:: check() && Auth:: user()->status == 'student'){
+            $courses = DB::select("SELECT * FROM courses
+                                    LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
+                                    WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
+        }else{
+            $courses = DB::table('courses')->join('tutors','courses.idTutor','=','tutors.idTutor')->get();
+        }
+
         $idCards = DB::table('image')->get();
         $rate = DB::table('tutors')
             ->update(['rating' => DB::raw("(SELECT AVG(review.review) FROM review
@@ -73,7 +82,8 @@ class CourseController extends Controller
 
     public function courseShow(){
         $id = Auth::id();
-        if(Auth:: user()->status == 'student'){
+
+        if(Auth:: check() && Auth:: user()->status == 'student'){
             $courses = DB::select("SELECT * FROM courses
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
                                     WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
@@ -111,14 +121,17 @@ class CourseController extends Controller
         ->select('enroll.idstudent')
         ->get();
         $enrolled=0;
-        if ( Auth:: user()->status == 'student'){
+        if(Auth:: check()){
+            if ( Auth:: user()->status == 'student'){
             $id = Auth::id();
             foreach ($students as $student){
                 if ($student->idstudent == $id){
                     $enrolled=1;
                 }
             } 
+            }
         }
+        
         return view('course/courseInfo',['avgReview' => $avgReview,'nReview' => $nReview,'course' => $course, 'tutor' => $tutor,
         'imageTutor'=>$imageTutor, 'age'=>$age, 'startTime'=>$startTime, 'endTime'=>$endTime,'students'=>$students,'enrolled'=>$enrolled]);
     }
