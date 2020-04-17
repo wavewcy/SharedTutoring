@@ -194,7 +194,7 @@ class CourseController extends Controller
 
             if($file = $request->file('image') ){
                 $img = $file -> getClientOriginalName();
-                $file -> move('images/imageCourse',$img);
+                $file -> move('images',$img);
             }
 
             if($subject === null or $day === null or $maxStudent === null or $Ncourse === null
