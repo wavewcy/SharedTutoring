@@ -136,15 +136,24 @@ transform: translateY(-50%);
 
 <body>
 
-    @if (Session('success'))
-    <script type="text/javascript">
-              Swal.fire({
-icon: 'success',
-title: 'OK',
-text: 'Success!!'
-})
+   @if (Session('success'))
+      <script type="text/javascript">
+            Swal.fire({
+               icon: 'success',
+               title: 'OK',
+               text: 'Success!!'
+               })
+      </script>
+      @endif
 
-</script>
+   @if (Session('success2'))
+      <script type="text/javascript">
+            Swal.fire({
+               icon: 'success',
+               title: 'Success!',
+               text: 'ระบบกำลังตรวจสอบข้อมูลของท่าน ใช้เวลาประมาณ 1-2 วัน หลังจากนั้นกรุณาลอง log in เข้าสู่ระบบ'
+               })
+      </script>
       @endif
 <!-- Preloader section
 ================================================== -->
@@ -196,7 +205,7 @@ text: 'Success!!'
                         <li><a href="{{url('/studentEdit')}}">edit profile</a></li>
                               <!-- tutor -->
                               @elseif ( Auth:: user()->status == 'tutor')
-								<li><a href="{{url('/Profile')}}">Profile</a></li>
+                                 <li><a class="click" onclick="fncAction1({{Auth:: user()->id}})">Profile</a></li>
                                 <li><a href="{{url('/course')}}">Tutor course</a></li>
                                  <!-- admin -->
                                  @else
@@ -261,13 +270,13 @@ text: 'Success!!'
 <section id="feature">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 wow fadeInLeft" data-wow-delay="1.5s">
+					<div class="col-md-6 wow fadeInLeft" data-wow-delay="0.6s">
 						<h1 style="float:center;margin-left:100px;" class="text-uppercase">learner</h1>
                         <p style="float:center;margin-left:100px;"><i class="fa fa-circle"></i>ค้นหาติวเตอร์ที่ต้องการ</p>
                         <p style="float:center;margin-left:100px;"><i class="fa fa-circle"></i>ลงทะเบียนคอร์สเรียนผ่านระบบ</p>
                         <p style="float:center;margin-left:100px;"><i class="fa fa-circle"></i>ลงประกาศหาติวเตอร์ที่ตรงกับความต้องการ</p>
 					</div>
-					<div class="col-md-6 wow fadeInRight" data-wow-delay="2s">
+					<div class="col-md-6 wow fadeInRight" data-wow-delay="0.3s">
                         <img src="images/reading.png" class="img-responsive" alt="feature img"
                          style="width:100%;max-width:250px;float:left;">
 					</div>
@@ -280,11 +289,11 @@ text: 'Success!!'
 		<section id="feature1">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 wow fadeInUp" data-wow-delay="1.8s">
+					<div class="col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                         <img src="images/tt.png" class="img-responsive" alt="feature img" 
                         style="width:100%;max-width:250px;float:center;margin-left:100px;">
 					</div>
-					<div class="col-md-6 wow fadeInUp" data-wow-delay="1.5s">
+					<div class="col-md-6 wow fadeInUp" data-wow-delay="0.8s">
 						<h1 class="text-uppercase">Tutor</h1>
                         <p><i class="fa fa-circle" ></i>เพิ่มคอร์สเรียนที่น่าสนใจ</p>
                         <p><i class="fa fa-circle"></i>รับงานสอนได้โดยตรง ไม่ต้องเสียค่าใช้จ่าย</p>
@@ -348,7 +357,7 @@ text: 'Success!!'
           <h3>An Interesting Courses</h3>
         </div>
       </div>
-   <div class="row">
+    <div class="row wow fadeInUp" data-wow-delay="0.5s">
        <a href="/SE_Project/public/allcourse" class="btn" style="float: right;margin-right: 65px;width:10%;">
        <b>All course</b></a>
     </div>
@@ -359,7 +368,7 @@ text: 'Success!!'
 			<div class="swiper-wrapper ">
             @foreach ( $courses as $c )
             <div class="swiper-slide ">
-                        <div class="wow fadeInUp col-md-11 col-sm-10 " data-wow-delay="0.8s" style="padding-top: 25px">
+                        <div class="wow fadeInUp col-md-11 col-sm-10 " data-wow-delay="0.4s" style="padding-top: 25px">
                            <div class="blog-thumb">
                               <a onclick="fncAction0({{$c->idcourse}})" class="click"><img src="images/{{$c->img}}" onerror="this.src='images/blog-img3.jpg'" class="img-responsive" alt="Blog"></a>
                               <h1 onclick="fncAction0({{$c->idcourse}})" class="text click">{{$c->Ncourse}}</h1>
@@ -403,19 +412,19 @@ text: 'Success!!'
       <!-- team carousel -->
       <div id=" team-carousel" class="owl-carousel">
       @foreach ( $tutors as $t )
-      <div class="item col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.5s">
+      <div class="item col-md-4 col-sm-4 wow fadeInUp click"  onClick="fncAction1({{$t->idTutor}})"data-wow-delay="0.5s">
         <div class="team-thumb">
         @foreach($idCards as $idCard)
 		@if($t->idTutor == $idCard->idTutor)
           <div class="image-holder">
-            <img src="images/imageProfile/{{$idCard->img_path}}" class="img-responsive img-circle" alt="Mary" style="width:100%;max-width:200px">
+            <img class="click" onClick="fncAction1({{$t->idTutor}})" src="images/imageProfile/{{$idCard->img_path}}" onerror="this.src='images/user.png'" class="img-responsive img-circle" alt="Mary" style="width:100%;max-width:200px">
           </div>
           @endif
         @endforeach
-        <a class="click" onClick="fncAction1({{$t->idTutor}})">
-            <h2 class="heading">{{$t->Fname}}</h2>
-            <h2 class="heading">{{$t->Lname}}</h2>
-        </a> <!-- link ไป profile tutor -->
+        
+         <h2 class="heading">{{$t->Fname}}</h2>
+         <h2 class="heading">{{$t->Lname}}</h2>
+        
         <div class="heading">
         <?php
                            if ($t->rating>=0 and $t->rating<0.5){

@@ -217,7 +217,7 @@ http://www.tooplate.com/view/2082-pure-mix
                               <!-- tutor -->
                               @elseif ( Auth:: user()->status == 'tutor')
 
-                                 <li><a href="{{url('/Profile')}}">Profile</a></li>
+                                 <li><a class="click" onclick="fncAction1({{Auth:: user()->id}})">Profile</a></li>
                                  <li><a href="{{url('/course')}}">Tutor Course</a></li>
 
 
@@ -239,7 +239,6 @@ http://www.tooplate.com/view/2082-pure-mix
                                  @if (Route::has('register'))
                                  <li><a href="{{url('/register')}}">Register</a></li>
                                  @endif
-                                 <li><a href="{{url('/contact')}}">Contact</a></li>
                               </ul>
                               @endif
 
@@ -474,6 +473,7 @@ http://www.tooplate.com/view/2082-pure-mix
    function fncAction1(idTutor) {
       window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
    }
+
 </script>
 
    <!-- Footer section

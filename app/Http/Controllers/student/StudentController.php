@@ -60,23 +60,26 @@ class StudentController extends Controller
         $email=$request->input('email');
         $phone=$request->input('phone');
         $address=$request->input('address');
-        // $pass=$request->input('password');
         $id = Auth::id();
+        $haveEmail = DB::table('students')->where(['email' => $email])->exists();
 
+        $SEmail = DB::table('students')
+        ->select('email')
+        ->where([
+            ['idstudent','=', $id],
+            ['email', '=', $email]
+            ])->get();
 
-        // $data = DB::select('select email from students where email=? ',[$email]);
-
+        if($haveEmail){
+            if($SEmail == "[]"){
+                return redirect()->back()->with('haveEmail', 'This Email is duplicate');
+            }
+        }
 
         if($Fname === null or $Lname === null or $email === null or $phone === null ) {
 
             return redirect()->back()->with('null','Please fill all required field.');
-        }
-
-        // elseif($data != null ){
-
-        //     return redirect()->back()->with('mail','Please fill all required field.');
-        // }
-        else{
+        }else{
             DB::table('students')
             ->where(['idstudent' => $id])
             ->update(
@@ -93,7 +96,7 @@ class StudentController extends Controller
                 ['name' =>$Fname,
                 'email' => $email,]
             );
-            // return redirect()->back()->with('success','success update');
+            
             return redirect('/studentEdit')->with('success','success update');
         }
     }

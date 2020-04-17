@@ -25,9 +25,12 @@ class CourseController extends Controller
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
                                     WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
         }else{
-            $courses = DB::table('courses')->join('tutors','courses.idTutor','=','tutors.idTutor')->get();
+            $today = Carbon::today();
+            $courses = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+            where ? <= start_date',[$today->format('Y-m-d')]);
         }
-
+        
+        
         $idCards = DB::table('image')->get();
         $rate = DB::table('tutors')
             ->update(['rating' => DB::raw("(SELECT AVG(review.review) FROM review
@@ -88,14 +91,15 @@ class CourseController extends Controller
                                     LEFT JOIN tutors ON courses.idTutor = tutors.idTutor
                                     WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
         }else{
-            $courses = DB::table('courses')->join('tutors','courses.idTutor','=','tutors.idTutor')->get();
+            $today = Carbon::today();
+            $courses = DB::SELECT('SELECT * FROM `courses`join tutors using (idTutor)
+            where ? <= start_date',[$today->format('Y-m-d')]);
         }
 
         $students=DB::select('  SELECT courses.idcourse, COUNT(idstudent) AS "nStudent"
                                 FROM courses
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
-
 
         return view('/course/home',['courses' => $courses,'students'=>$students]);
     }
@@ -145,7 +149,7 @@ class CourseController extends Controller
             'idcourse' => $idcourse,
             'idstudent' =>$idstudent]
         );
-        return redirect('/');
+        return redirect('/allcourse');
     }
 
     public function deleteCourse(request $request){

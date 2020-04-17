@@ -225,7 +225,7 @@ http://www.tooplate.com/view/2082-pure-mix
 					</script>
 					@endif
 
-					@if (Session('mail'))
+					@if (Session('haveEmail'))
 					<script type="text/javascript">
 						Swal.fire({
 							icon: 'error',
@@ -264,7 +264,7 @@ http://www.tooplate.com/view/2082-pure-mix
 							<label for="email">
 								<font size="3">Email*</font>
 							</label>
-							<input name="email" type="email" class="form-control" value="{{$student->email}}" placeholder="Your Email" required readonly>
+							<input name="email" type="email" class="form-control" value="{{$student->email}}" placeholder="Your Email" required >
 
 							<label for="address">
 								<font size="3">Address</font>
@@ -275,7 +275,7 @@ http://www.tooplate.com/view/2082-pure-mix
 							<label for="phone">
 								<font size="3">Phone*</font>
 							</label>
-							<input name="phone" type="text" class="form-control" value="{{$student->phone}}" placeholder="Your Phon number" required>
+							<input name="phone" type="text" class="form-control" value="{{$student->phone}}" placeholder="Your Phon number" minlength=10 maxlength=10 required>
 
 							<!-- <div class="contact-submit"> -->
 							<div class="col-md-6 col-sm-4">

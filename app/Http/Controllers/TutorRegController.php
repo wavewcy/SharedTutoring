@@ -95,7 +95,7 @@ class TutorRegController extends Controller
             ]
          );
 
-    return  redirect('/')->with('success','The customer has been stored in database');
+    return  redirect('/')->with('success2','The customer has been stored in database');
         }
     }
 

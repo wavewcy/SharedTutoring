@@ -339,7 +339,7 @@ text: 'Success!!'
                                  </div>
                                 
                                 <label for="phone"><font size="3">Phone*</font></label>
-                                <input name="phone" type="text" class="form-control" maxlength="10" placeholder="เบอร์ติดต่อ" required>
+                                <input name="phone" type="text" class="form-control" minlength=10 maxlength=10 placeholder="เบอร์ติดต่อ" required>
 
                                 <!-- <div class="contact-submit"> -->
                                 

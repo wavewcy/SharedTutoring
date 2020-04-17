@@ -102,7 +102,7 @@ http://www.tooplate.com/view/2082-pure-mix
                                   <li><a href="#">review</a></li>
                                <!-- tutor -->
                                @elseif ( Auth:: user()->status == 'tutor')
-                                 <li><a href="{{url('/Profile')}}">Profile</a></li>
+                                 <li><a class="click" onclick="fncAction5({{Auth:: user()->id}})">Profile</a></li>
                                  <li><a href="{{url('/course')}}">Tutor course</a></li>
                                <!-- admin -->
                                @else
@@ -239,8 +239,11 @@ http://www.tooplate.com/view/2082-pure-mix
 
    function fncAction4(idcourse){
 		window.location.assign("/SE_Project/public/courseInformation?idcourse="+idcourse);
-	}
+   }
    
+   function fncAction5(idTutor) {
+      window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
+   }
 </script>
 <!-- Footer section
 ================================================== -->

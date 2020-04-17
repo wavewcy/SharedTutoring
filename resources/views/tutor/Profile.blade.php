@@ -37,7 +37,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
    <!-- Site title
    ================================================== -->
-   <title>Your Profile</title>
+   <title>Tutor Profile</title>
 
    <!-- Bootstrap CSS
    ================================================== -->
@@ -320,7 +320,7 @@ http://www.tooplate.com/view/2082-pure-mix
                               <li><a href="{{url('/studentEdit')}}">edit profile</a></li>
                                <!-- tutor -->
                                @elseif ( Auth:: user()->status == 'tutor')
-                                 <li><a href="{{url('/Profile')}}">Profile</a></li>
+                                 <li><a class="click" onclick="fncAction1({{Auth:: user()->id}})">Profile</a></li>
                                  <li><a href="{{url('/course')}}">Tutor course</a></li>
                                <!-- admin -->
                                @else
@@ -342,7 +342,6 @@ http://www.tooplate.com/view/2082-pure-mix
                             @if (Route::has('register'))
                                <li><a href="{{url('/register')}}">Register</a></li>
                             @endif
-                               <li><a href="{{url('/contact')}}">Contact</a></li>
                          </ul>
                          @endif
                      </div>
@@ -617,23 +616,27 @@ http://www.tooplate.com/view/2082-pure-mix
                   <lii>Course</lii>
                </ul>
                
-
-               @foreach ($courses as $course)
-               <div class="cont" >
-                  <div class="row"style="padding-top:10px;padding-bottom:10px;">
-                     <div class="col-md-12">
-                        <div class="blog-thumb">
-                           <div class="col-md-6" align="center">
-                              <img src="images/{{$course->img}}" style="width:100%;max-width:300px high='100%'" onerror="this.src='images/blog-img3.jpg'" class="img-responsive alt=" Blog"></a>
-                           </div>
-                           <div class="col-md-6" align="center" style="margin-top: 35px;">
-                              <p class="pagelink click" onclick="fncAction0({{$course->idcourse}})">{{$course -> Ncourse}}</p>
+               @if (sizeof($courses)>0)
+                  @foreach ($courses as $course)
+                     <div class="cont" >
+                        <div class="row"style="padding-top:10px;padding-bottom:10px;">
+                           <div class="col-md-12">
+                              <div class="blog-thumb">
+                                 <div class="col-md-6" align="center">
+                                    <img src="images/{{$course->img}}" style="width:100%;max-width:300px high='100%'" onerror="this.src='images/blog-img3.jpg'" class="img-responsive alt=" Blog"></a>
+                                 </div>
+                                 <div class="col-md-6" align="center" style="margin-top: 35px;">
+                                    <p class="pagelink click" onclick="fncAction0({{$course->idcourse}})">{{$course -> Ncourse}}</p>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-               </div>
-               @endforeach
+                  @endforeach
+               
+               @else
+                  <h3 style="color: silver;">No course</h3>
+               @endif
                <button style="width:90%"class="btn button button2" onClick="javascript:history.go(-1)">Back</button>
             </div>
          </div>
@@ -644,6 +647,9 @@ http://www.tooplate.com/view/2082-pure-mix
 <script type="text/javascript">
       function fncAction0(idcourse) {
          window.location.assign("/SE_Project/public/courseInformation?idcourse=" + idcourse);
+      }
+      function fncAction1(idTutor) {
+         window.location.assign("/SE_Project/public/Profile?idTutor=" + idTutor);
       }
 </script>
 

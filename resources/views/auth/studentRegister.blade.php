@@ -232,7 +232,7 @@ http://www.tooplate.com/view/2082-pure-mix
 					<input name="email" type="email" class="form-control" placeholder="Your Email" required>
 
 					<label for="phone" ><font size="3">Phone*</font></label>
-					<input name="phone" type="text" class="form-control" placeholder="Your Phon number" required>
+					<input name="phone" type="text" class="form-control" placeholder="Your Phon number" minlength=10 maxlength=10 required>
 
  					<!-- <label for="psw">Password</label>
  					<input type="password" name="psw" class="form-control" minlength="8" title="Must contain at least one number,and at least 8 or more characters" required>
