@@ -89,13 +89,13 @@ class CourseController extends Controller
                                     WHERE idcourse NOT IN (SELECT idcourse FROM enroll WHERE idstudent = '$id')");
         }else{
             $courses = DB::table('courses')->join('tutors','courses.idTutor','=','tutors.idTutor')->get();
+            
         }
 
         $students=DB::select('  SELECT courses.idcourse, COUNT(idstudent) AS "nStudent"
                                 FROM courses
                                 LEFT JOIN enroll ON courses.idcourse = enroll.idcourse
                                 GROUP BY courses.idcourse');
-
 
         return view('/course/home',['courses' => $courses,'students'=>$students]);
     }
