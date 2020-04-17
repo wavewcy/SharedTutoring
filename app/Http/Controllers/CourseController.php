@@ -145,7 +145,7 @@ class CourseController extends Controller
             'idcourse' => $idcourse,
             'idstudent' =>$idstudent]
         );
-        return redirect('/');
+        return redirect('/allcourse');
     }
 
     public function deleteCourse(request $request){

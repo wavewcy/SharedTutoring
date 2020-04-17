@@ -157,8 +157,8 @@ http://www.tooplate.com/view/2082-pure-mix
       <script type="text/javascript">
 				Swal.fire({
   icon: 'success',
-  title: 'OK',
-  text: 'Success!!'
+  title: 'Success!',
+  text: 'ระบบกำลังตรวจสอบข้อมูลของท่าน ใช้เวลาประมาณ 1-2 วัน หลังจากนั้นกรุณาลอง log in เข้าสู่ระบบ'
 })
 				</script>
       @endif
